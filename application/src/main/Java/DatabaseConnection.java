@@ -3,9 +3,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DatabaseConnection {
-    private static final String JDBC_URL = "jdbc:mysql://localhost:3306/your_database";
-    private static final String USERNAME = "your_username";
-    private static final String PASSWORD = "your_password";
+    private static final String JDBC_URL = "jdbc:mysql://srv-bdens.insa-toulouse.fr:3306/";
+    private static final String USERNAME = "projet_gei_003";
+    private static final String PASSWORD = "roh7iuSo";
     private static Connection connection;
 
     // Private constructor to prevent instantiation from outside the class
