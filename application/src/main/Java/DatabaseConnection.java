@@ -1,5 +1,7 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.Statement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class DatabaseConnection {
@@ -28,6 +30,8 @@ public class DatabaseConnection {
         }
         return connection;
     }
+
+
 
     // Static method to close the connection
     public static void closeConnection() {
