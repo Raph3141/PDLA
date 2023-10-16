@@ -1,5 +1,6 @@
+import java.sql.Connection;
 public class MainClass {
-    public static void main(String[] args) {
+        public static void main(String[] args) {
         Connection connection = DatabaseConnection.getConnection();
 
         // Use the connection for database operations
