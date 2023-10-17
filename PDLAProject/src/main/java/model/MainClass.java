@@ -1,3 +1,5 @@
+import controllers.DatabaseConnection;
+
 import java.sql.Connection;
 public class MainClass {
         public static void main(String[] args) {
