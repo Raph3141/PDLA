@@ -1,3 +1,5 @@
+package model;
+
 import controllers.DatabaseConnection;
 
 import java.sql.Connection;
