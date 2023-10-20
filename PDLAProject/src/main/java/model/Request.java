@@ -5,9 +5,8 @@ public class Request {
     protected String idVolunteer;
     protected String Date;
     protected String Location;
-    protected String Status;
 
-    public Request(String idHelpSeeker, String idVolunteer, String Date, String Location, String Status) {
+    public Request(String idHelpSeeker, String idVolunteer, String Date, String Location) {
         this.idHelpSeeker = idHelpSeeker;
         this.idVolunteer = idVolunteer;
         this.Date = Date;
