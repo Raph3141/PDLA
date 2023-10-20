@@ -1,13 +1,9 @@
 package controllers;
 import model.*;
-import controllers.DatabaseConnection;
-import model.*;
-import view.*;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
-import static view.class1.CreateAndShowWindow;
 
 public class MainClass {
         public static void main(String[] args) {
