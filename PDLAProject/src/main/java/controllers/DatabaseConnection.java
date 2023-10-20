@@ -41,7 +41,7 @@ public class DatabaseConnection {
         }
     }
 
-    public ResultSet executeQuery(String query) throws SQLException{
+    //public ResultSet executeQuery(String query) throws SQLException{
 
-    }
+    //}
 }

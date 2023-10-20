@@ -4,6 +4,8 @@ import controllers.DatabaseConnection;
 import model.*;
 import view.*;
 import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 import static view.class1.CreateAndShowWindow;
 
@@ -21,6 +23,18 @@ public class MainClass {
                    class1.CreateAndShowWindow();
                 }
             });*/
+
+            try {
+                // Load the JDBC driver (You should load it only once in your application)
+                Class.forName("com.mysql.cj.jdbc.Driver");
+
+                // Create the connection
+                connection = DriverManager.getConnection("jdbc:mysql://srv-bdens.insa-toulouse.fr:3306/", "projet_gei_003", "roh7iuSo");
+                //System.out.println("Connected to the database");
+            } catch (ClassNotFoundException | SQLException e) {
+                e.printStackTrace();
+                // Handle the exception as needed
+            }
 
             // Don't forget to close the connection when done
             DatabaseConnection.closeConnection();
