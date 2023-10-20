@@ -12,7 +12,6 @@ public class Request {
         this.idVolunteer = idVolunteer;
         this.Date = Date;
         this.Location = Location;
-        this.Status = Status;
     }
 
     public String getIdHelpSeeker() {
@@ -29,10 +28,6 @@ public class Request {
 
     public String getLocation() {
         return Location;
-    }
-
-    public String getStatus() {
-        return Status;
     }
 
 }

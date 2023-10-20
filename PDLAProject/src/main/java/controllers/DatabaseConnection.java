@@ -15,7 +15,7 @@ public class DatabaseConnection {
     }
 
     // Static method to get a database connection
-    public static Connection getConnection() {
+    public static Connection getConnection() { //test
         if (connection == null) {
             try {
                 // Load the JDBC driver (You should load it only once in your application)
