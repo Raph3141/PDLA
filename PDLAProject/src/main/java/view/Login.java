@@ -22,8 +22,14 @@ public class Login {
         JTextField EmailField = new JTextField(30);
         JPasswordField PasswordField = new JPasswordField(20);
 
+        //choose if I want to be a volunteer or a help seeker
+        String[] users = {"Volunteer", "HelpSeeker"};
+        JComboBox<String> usersComboBox = new JComboBox<>(users);
+
         //add info to the frame
-        LoginFrame.setLayout(new GridLayout(5, 2));
+        LoginFrame.setLayout(new GridLayout(6, 2));
+        LoginFrame.add(usersComboBox);
+        LoginFrame.add(new JLabel()); //to have everything aligned
         LoginFrame.add(FirstNameLabel);
         LoginFrame.add(FirstNameField);
         LoginFrame.add(LastNameLabel);
@@ -36,7 +42,6 @@ public class Login {
         //add the login button
         JButton LoginButton = new JButton("Login");
        // LoginButton.addActionListener( );
-
         LoginFrame.add(LoginButton);
 
 
