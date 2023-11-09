@@ -1,5 +1,6 @@
 package view;
 import javax.swing.*;
+import java.awt.*;
 
 
 public class NewFrame extends JFrame{ //test
@@ -7,19 +8,19 @@ public class NewFrame extends JFrame{ //test
         //create and set up the window
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //to exit the window
-        this.setSize(300,150);
+        //make the frame of the size of the screen
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        int screenWidth = (int) screenSize.getWidth();
+        int screenHeight = (int) screenSize.getHeight();
+        setSize(screenWidth, screenHeight);
+
         this.setTitle("Volunteering App");
     }
-
-        public static class InsideFrame {
-            NewFrame newFrame = new NewFrame();
-        }
 
     public static void main(String[] args) {
 
         NewFrame newFr = new NewFrame();
 
-        InsideFrame insideFrame = new InsideFrame();
     }
 
 }
