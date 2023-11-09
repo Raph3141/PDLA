@@ -10,7 +10,7 @@ public class MainClass {
         try {
             // Use the connection for database operations
 
-            Users newUser = new Users("test", "John", "Doe", "john.doe@example.com", "password123");
+            Users newUser = new Users("test4", "John", "Doe", "john.doe@example.com", "password123");
             NewUser newUserHandler = new NewUser();
             newUserHandler.addNewUser(newUser);
 

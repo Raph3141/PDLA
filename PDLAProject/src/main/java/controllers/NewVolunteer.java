@@ -30,9 +30,6 @@ public class NewVolunteer {
         } catch (SQLException e) {
             e.printStackTrace();
             // Handle the exception as needed
-        } finally {
-            // Don't forget to close the connection when done
-            DatabaseConnection.closeConnection();
         }
     }
 }
