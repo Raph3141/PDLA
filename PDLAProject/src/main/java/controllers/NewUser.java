@@ -16,6 +16,7 @@ public class NewUser {
 
             try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
                 // Set values for the parameters using the Users class methods
+                // the preparedStatement.setString() method is used to set the values for the placeholders (?) in the SQL query
                 preparedStatement.setString(1, user.getId());
                 preparedStatement.setString(2, user.getFirstName());
                 preparedStatement.setString(3, user.getLastName());

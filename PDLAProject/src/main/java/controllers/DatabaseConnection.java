@@ -9,13 +9,12 @@ public class DatabaseConnection {
     private static final String JDBC_URL = "jdbc:mysql://srv-bdens.insa-toulouse.fr:3306/projet_gei_003";
     private static final String USERNAME = "projet_gei_003";
     private static final String PASSWORD = "roh7iuSo";
-    private static Connection connection; // Declare a static connection field
+    private static Connection connection;
 
     // Static method to get a database connection
     public static Connection getConnection() { //test
         if (connection == null) {
             try {
-                // Load the JDBC driver (You should load it only once in your application)
                 Class.forName("com.mysql.cj.jdbc.Driver");
 
                 // Create the connection
@@ -23,7 +22,6 @@ public class DatabaseConnection {
                 System.out.println("Connected to the database");
             } catch (ClassNotFoundException | SQLException e) {
                 e.printStackTrace();
-                // Handle the exception as needed
             }
         }
         return connection;
@@ -40,8 +38,4 @@ public class DatabaseConnection {
             }
         }
     }
-
-    //public ResultSet executeQuery(String query) throws SQLException{
-
-    //}
 }

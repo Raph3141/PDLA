@@ -10,12 +10,12 @@ public class MainClass {
         try {
             // Use the connection for database operations
 
-            Users newUser = new Users("test4", "John", "Doe", "john.doe@example.com", "password123");
-            NewUser newUserHandler = new NewUser();
-            newUserHandler.addNewUser(newUser);
+            //Users newUser = new Users("test4", "John", "Doe", "john.doe@example.com", "password123");
+            //NewUser newUserHandler = new NewUser();
+            //newUserHandler.addNewUser(newUser);
 
         } finally {
-            // Don't forget to close the connection when done
+            // closes the connection when done
             DatabaseConnection.closeConnection();
         }
     }
