@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import view.NewFrame;
 
-public class Login {
+public class Login extends Component {
 
     Login() {
         NewFrame LoginFrame = new NewFrame();
@@ -39,13 +39,29 @@ public class Login {
         LoginFrame.add(PasswordLabel);
         LoginFrame.add(PasswordField);
 
-        //add the login button
+
+        //Implementation of login button
         JButton LoginButton = new JButton("Login");
-       // LoginButton.addActionListener( );
+        LoginButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String FirstName = FirstNameField.getText();
+                String LastName = LastNameField.getText();
+                String Email = EmailField.getText();
+                char[] PasswordChars = PasswordField.getPassword();
+                String Password = new String(PasswordChars);
+                String selectedUser = (String) usersComboBox.getSelectedItem();
+
+                //call of methods to add user to the database
+                //confirmation message once it is done
+                JOptionPane.showMessageDialog(Login.this, "You have been successfully logged in as: " + FirstName + LastName);
+                // Create an instance of NewFrame after successful login
+                //NewFrame newFrame = new NewFrame();
+            }
+        });
+
         LoginFrame.add(LoginButton);
-
-
-}
+    }
 
     public static void main(String[] args) {
         Login log = new Login();
