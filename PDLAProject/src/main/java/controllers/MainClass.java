@@ -1,5 +1,6 @@
 package controllers;
 import model.*;
+import view.Login;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -21,7 +22,7 @@ public class MainClass {
             //Volunteers newVolunteer = new Volunteers("v2", "t", "t", "t", "t");
             //NewVolunteer newVolunteerHandler = new NewVolunteer();
             //newVolunteerHandler.addNewVolunteer(newVolunteer);
-
+            Login log = new Login();
 
         } finally {
             // closes the connection when done
