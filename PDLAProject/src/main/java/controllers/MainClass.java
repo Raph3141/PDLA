@@ -14,6 +14,11 @@ public class MainClass {
             //NewUser newUserHandler = new NewUser();
             //newUserHandler.addNewUser(newUser);
 
+            Request newRequest = new Request("r1","null","date", "location", "description");
+            NewRequest newRequestHandler = new NewRequest();
+            newRequestHandler.addNewRequest(newRequest);
+
+
         } finally {
             // closes the connection when done
             DatabaseConnection.closeConnection();
