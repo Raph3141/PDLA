@@ -3,9 +3,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import view.NewFrame;
 
-public class Login extends Component {
+import model.HelpSeekers;
+import model.Volunteers;
+import view.NewFrame;
+import java.util.UUID;
+
+public class Login {
 
     Login() {
         NewFrame LoginFrame = new NewFrame();
@@ -52,9 +56,38 @@ public class Login extends Component {
                 String Password = new String(PasswordChars);
                 String selectedUser = (String) usersComboBox.getSelectedItem();
 
-                //call of methods to add user to the database
+                //create an id for the volunteers
+                assert selectedUser != null;
+                if (selectedUser.equals("Volunteer")) {
+                    String VolunteerPrefix = "V";
+                    String Volunteerid = VolunteerPrefix + UUID.randomUUID().toString().substring(1);
+
+                    //we add the volunteer to the table user and the table volunteers
+                    model.Volunteers newVolunteer = new Volunteers(Volunteerid, FirstName, LastName, Email, Password);
+                    controllers.NewVolunteer newVolunteerhandler = new controllers.NewVolunteer();
+                    newVolunteerhandler.addNewVolunteer(newVolunteer);
+
+                    model.Users newUser = new model.Users(Volunteerid, FirstName, LastName, Email, Password);
+                    controllers.NewUser newUserHandler = new controllers.NewUser();
+                    newUserHandler.addNewUser(newUser);
+
+                } else if (selectedUser.equals("HelpSeeker")) {
+                    String HelpSeekerPrefix = "H";
+                    String HelpSeekerid = HelpSeekerPrefix + UUID.randomUUID().toString().substring(1);
+
+                    //we add the HelpSeeker to the table user and the table volunteers
+                    model.HelpSeekers newHelpSeeker = new HelpSeekers(HelpSeekerid, FirstName, LastName, Email, Password);
+                    controllers.NewHelpSeeker newHelpSeekerhandler = new controllers.NewHelpSeeker();
+                    newHelpSeekerhandler.addNewHelpSeeker(newHelpSeeker);
+
+                    model.Users newUser = new model.Users(HelpSeekerid, FirstName, LastName, Email, Password);
+                    controllers.NewUser newUserHandler = new controllers.NewUser();
+                    newUserHandler.addNewUser(newUser);
+                }
+
+
                 //confirmation message once it is done
-                JOptionPane.showMessageDialog(Login.this, "You have been successfully logged in as: " + FirstName + LastName);
+                JOptionPane.showMessageDialog(null, "You have been successfully logged in as: " + FirstName +" " + LastName);
                 // Create an instance of NewFrame after successful login
                 //NewFrame newFrame = new NewFrame();
             }
