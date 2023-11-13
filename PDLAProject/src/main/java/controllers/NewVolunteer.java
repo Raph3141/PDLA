@@ -13,15 +13,11 @@ public class NewVolunteer {
 
         try {
             // Using PreparedStatement to prevent SQL injection
-            String insertQuery = "INSERT INTO Volunteers (idUsers, firstName, lastName, email, password) VALUES (?, ?, ?, ?, ?)";
+            String insertQuery = "INSERT INTO Volunteers (idUsers) VALUES (?)";
 
             try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
                 // Set values for the parameters using the Volunteers class methods
                 preparedStatement.setString(1, volunteer.getId());
-                preparedStatement.setString(2, volunteer.getFirstName());
-                preparedStatement.setString(3, volunteer.getLastName());
-                preparedStatement.setString(4, volunteer.getEmail());
-                preparedStatement.setString(5, volunteer.getPassword());
 
                 // Execute the insert query
                 preparedStatement.executeUpdate();
