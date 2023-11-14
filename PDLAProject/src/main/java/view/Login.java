@@ -74,6 +74,9 @@ public class Login {
                     controllers.NewUser newUserHandler = new controllers.NewUser();
                     newUserHandler.addNewUser(newUser);
 
+                    // open volunteer frame after login
+                    VolunteerPage VolunteerPage = new VolunteerPage(Volunteerid);
+
                 } else if (selectedUser.equals("HelpSeeker")) {
                     String HelpSeekerPrefix = "H";
                     String HelpSeekerid = HelpSeekerPrefix + UUID.randomUUID().toString().substring(1,19);
@@ -86,13 +89,14 @@ public class Login {
                     model.Users newUser = new model.Users(HelpSeekerid, FirstName, LastName, Email, Password);
                     controllers.NewUser newUserHandler = new controllers.NewUser();
                     newUserHandler.addNewUser(newUser);
+
+                    // open help seeker frame after login
+                    HelpSeekerPage HelpSeekerPage = new HelpSeekerPage(HelpSeekerid);
                 }
 
 
                 //confirmation message once it is done
                 JOptionPane.showMessageDialog(null, "You have been successfully logged in as: " + FirstName +" " + LastName);
-                // Create an instance of NewFrame after successful login
-                //NewFrame newFrame = new NewFrame();
             }
         });
 
