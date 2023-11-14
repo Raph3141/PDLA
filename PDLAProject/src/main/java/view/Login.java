@@ -83,9 +83,9 @@ public class Login {
                     controllers.NewHelpSeeker newHelpSeekerhandler = new controllers.NewHelpSeeker();
                     newHelpSeekerhandler.addNewHelpSeeker(newHelpSeeker);
 
-                   // model.Users newUser = new model.Users(HelpSeekerid, FirstName, LastName, Email, Password);
-                    //controllers.NewUser newUserHandler = new controllers.NewUser();
-                    //newUserHandler.addNewUser(newUser);
+                    model.Users newUser = new model.Users(HelpSeekerid, FirstName, LastName, Email, Password);
+                    controllers.NewUser newUserHandler = new controllers.NewUser();
+                    newUserHandler.addNewUser(newUser);
                 }
 
 
