@@ -15,12 +15,10 @@ public class DatabaseConnection {
     public static Connection getConnection() { //test
         if (connection == null) {
             try {
-                Class.forName("com.mysql.cj.jdbc.Driver");
-
                 // Create the connection
                 connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
                 System.out.println("Connected to the database");
-            } catch (ClassNotFoundException | SQLException e) {
+            } catch (SQLException e) {
                 e.printStackTrace();
             }
         }

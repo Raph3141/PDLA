@@ -64,7 +64,7 @@ public class Login {
                 if (selectedUser.equals("Volunteer")) {
                     String VolunteerPrefix = "V";
                     String Volunteerid = VolunteerPrefix + UUID.randomUUID().toString().substring(1);
-                    
+
                     //we add the volunteer to the table user and the table volunteers
                     model.Volunteers newVolunteer = new Volunteers(Volunteerid, FirstName, LastName, Email, Password);
                     controllers.NewVolunteer newVolunteerhandler = new controllers.NewVolunteer();
