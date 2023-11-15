@@ -3,6 +3,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.UUID;
+
+import model.Volunteers;
 import view.NewFrame;
 public class Connect {
 
@@ -25,14 +28,26 @@ public class Connect {
         ConnectFrame.add(PasswordLabel);
         ConnectFrame.add(PasswordField);
 
-        //add the connect button
+        //implement the connect button
         JButton ConnectButton = new JButton("Connect");
-        // LoginButton.addActionListener( );
-        ConnectFrame.add(ConnectButton);
+        ConnectButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String Email = EmailField.getText();
+                char[] PasswordChars = PasswordField.getPassword();
+                String Password = new String(PasswordChars);
 
+
+                // open volunteer frame after login
+                //VolunteerPage VolunteerPage = new VolunteerPage();
+            }
+    });
+
+        //add the connect button
+        ConnectFrame.add(ConnectButton);
     }
-    public static void main(String[] args) {
-            Connect connect = new Connect();
-    }
+    //public static void main(String[] args) {
+           // Connect connect = new Connect();
+    //}
 
 }
