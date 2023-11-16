@@ -29,18 +29,22 @@ public class VolunteerPage {
             ChooseButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-
                     // Add volunteer's ID to the selected request
 
 
                     // Provide feedback to the user
                     JOptionPane.showMessageDialog(null, "You are now assigned to this request.");
+                }
+            });
+
+            // Add the button to the panel
+            RequestPanel.add(ChooseButton);
         }
 
-        //show the requests
+        // Show the requests
         VolunteerFrame.setLayout(new BorderLayout());
-        JScrollPane RequestPane = new JScrollPane(RequestPanel);
-        VolunteerFrame.add(RequestPane, BorderLayout.CENTER);
+        VolunteerFrame.add(RequestPanel, BorderLayout.CENTER);
+
     }
 }
 
