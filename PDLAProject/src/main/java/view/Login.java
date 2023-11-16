@@ -63,7 +63,7 @@ public class Login {
                 assert selectedUser != null;
                 if (selectedUser.equals("Volunteer")) {
                     String VolunteerPrefix = "V";
-                    String Volunteerid = VolunteerPrefix + UUID.randomUUID().toString().substring(1, 19);
+                    String Volunteerid = VolunteerPrefix + UUID.randomUUID().toString().substring(1);
 
                     //we add the volunteer to the table user and the table volunteers
                     model.Volunteers newVolunteer = new Volunteers(Volunteerid, FirstName, LastName, Email, Password);
@@ -79,7 +79,7 @@ public class Login {
 
                 } else if (selectedUser.equals("HelpSeeker")) {
                     String HelpSeekerPrefix = "H";
-                    String HelpSeekerid = HelpSeekerPrefix + UUID.randomUUID().toString().substring(1,19);
+                    String HelpSeekerid = HelpSeekerPrefix + UUID.randomUUID().toString().substring(1);
 
                     //we add the HelpSeeker to the table user and the table volunteers
                     model.HelpSeekers newHelpSeeker = new HelpSeekers(HelpSeekerid, FirstName, LastName, Email, Password);
