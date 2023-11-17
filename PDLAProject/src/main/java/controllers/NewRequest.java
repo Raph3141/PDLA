@@ -13,16 +13,17 @@ public class NewRequest {
 
         try {
             // Using PreparedStatement to prevent SQL injection
-            String insertQuery = "INSERT INTO Request (idHelpSeeker, idVolunteer, Date, Location, Description) VALUES (?, ?, ?, ?, ?)";
+            String insertQuery = "INSERT INTO Request (requestID, idHelpSeeker, idVolunteer, Date, Location, Description) VALUES (?, ?, ?, ?, ?, ?)";
 
             try (PreparedStatement preparedStatement = connection.prepareStatement(insertQuery)) {
                 // Set values for the parameters using the Users class methods
                 // the preparedStatement.setString() method is used to set the values for the placeholders (?) in the SQL query
-                preparedStatement.setString(1, request.getIdHelpSeeker());
-                preparedStatement.setString(2, request.getIdVolunteer());
-                preparedStatement.setString(3, request.getDate());
-                preparedStatement.setString(4, request.getLocation());
-                preparedStatement.setString(5, request.getDescription());
+                preparedStatement.setString(1, request.getRequestID());
+                preparedStatement.setString(2, request.getIdHelpSeeker());
+                preparedStatement.setString(3, request.getIdVolunteer());
+                preparedStatement.setString(4, request.getDate());
+                preparedStatement.setString(5, request.getLocation());
+                preparedStatement.setString(6, request.getDescription());
 
                 // Execute the insert query
                 preparedStatement.executeUpdate();

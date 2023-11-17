@@ -15,9 +15,10 @@ public class MainClass {
             //NewUser newUserHandler = new NewUser();
             //newUserHandler.addNewUser(newUser);
 
-            //Request newRequest = new Request("r1","null","date", "location", "description");
-            //NewRequest newRequestHandler = new NewRequest();
-            //newRequestHandler.addNewRequest(newRequest);
+            Request newRequest = new Request("exampleRequestID", "exampleHelpSeekerID", null, "2023-11-17", "Example Location", null, "Example Description");
+
+            NewRequest newRequestHandler = new NewRequest();
+            newRequestHandler.addNewRequest(newRequest);
 
             //Volunteers newVolunteer = new Volunteers("v2", "t", "t", "t", "t");
             //NewVolunteer newVolunteerHandler = new NewVolunteer();
