@@ -43,8 +43,10 @@ public class HelpSeekerPage {
                 String Location = LocationField.getText();
                 String Description = DescriptionField.getText();
 
+                String RequestId = UUID.randomUUID().toString().substring(1);
+
                 //insert the request into the database
-                Requests newRequest = new Requests(null, HelpSeekerid, null, date, Location, null, Description); // we set the idvolunteer and description with null until a volunteer accepts the request
+                Requests newRequest = new Requests(RequestId, HelpSeekerid, null, date, Location, "available", Description); // we set the idvolunteer and description with null until a volunteer accepts the request
                 controllers.NewRequest newRequestHandler = new controllers.NewRequest();
                 newRequestHandler.addNewRequest(newRequest);
 

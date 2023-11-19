@@ -5,8 +5,12 @@ import model.Users;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class NewUser {
+
+    private static List<Users> UsersList = new ArrayList<>();
     public void addNewUser(Users user) {
         Connection connection = DatabaseConnection.getConnection();
 
@@ -26,10 +30,36 @@ public class NewUser {
                 // Execute the insert query
                 preparedStatement.executeUpdate();
                 System.out.println("User added successfully");
+
+                String Id= user.getId();
+                String FirstName= user.getFirstName();
+                String LastName = user.getLastName();
+                String Email = user.getEmail();
+                String Password = user.getPassword();
+
+                // Add the new user to the UsersList
+                model.Users newUser = new model.Users(Id, FirstName, LastName, Email, Password);
+                //controllers.NewUser newUserHandler = new controllers.NewUser();
+                UsersList.add(newUser);
+                System.out.println(UsersList);
             }
         } catch (SQLException e) {
             e.printStackTrace();
             // Handle the exception as needed
         }
+    }
+
+    //for the connect frame
+    public static String getIdWithEmail(String email, String password) {
+        for (Users user : UsersList) {
+            System.out.println("test1");
+            if (user.getEmail().equals(email) && user.getPassword().equals(password)) {
+                System.out.println("test");
+                return user.getId();
+            }
+        }
+        // Return null or some indicator if no matching user is found
+        System.out.println("No matching user found.");
+        return null;
     }
 }

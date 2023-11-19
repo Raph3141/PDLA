@@ -75,7 +75,9 @@ public class Login {
                     newUserHandler.addNewUser(newUser);
 
                     // open volunteer frame after login
+                    LoginFrame.dipose();
                     VolunteerPage VolunteerPage = new VolunteerPage(Volunteerid);
+
 
                 } else if (selectedUser.equals("HelpSeeker")) {
                     String HelpSeekerPrefix = "H";

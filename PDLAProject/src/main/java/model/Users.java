@@ -1,5 +1,7 @@
 package model;
 
+import java.util.List;
+
 public class Users {
 
     protected String id;
@@ -7,6 +9,7 @@ public class Users {
     protected String lastName;
     protected String email;
     protected String password;
+
 
     public Users(String id,String firstName,String lastName,String email,String password){
         this.id=id;
@@ -33,4 +36,5 @@ public class Users {
     public String getPassword(){
         return password;
     }
+
 }

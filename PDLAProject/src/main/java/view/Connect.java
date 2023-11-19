@@ -5,6 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.UUID;
 
+import controllers.NewUser;
+import model.Users;
 import model.Volunteers;
 import view.NewFrame;
 public class Connect {
@@ -37,17 +39,29 @@ public class Connect {
                 char[] PasswordChars = PasswordField.getPassword();
                 String Password = new String(PasswordChars);
 
+                //get the user id
+                String Id = NewUser.getIdWithEmail(Email, Password);
+                System.out.println(Id);
 
-                // open volunteer frame after login
-                //VolunteerPage VolunteerPage = new VolunteerPage();
+                //case where the person is a help seeker
+                if (Id!=null) {
+                    if (Id.charAt(0) == 'H') {
+                        HelpSeekerPage HelpSeekerPage = new HelpSeekerPage(Id);
+                    } else if (Id.charAt(0) == 'V') {
+                        VolunteerPage VolunteerPage = new VolunteerPage(Id);
+                    }
+                }
+                else {
+                    JOptionPane.showMessageDialog(null, "Wrong password or email.");
+                }
             }
-    });
+        });
 
         //add the connect button
         ConnectFrame.add(ConnectButton);
     }
-    //public static void main(String[] args) {
-           // Connect connect = new Connect();
-    //}
 
+    public static void main(String[] args) {
+        Connect connect = new Connect();
+    }
 }

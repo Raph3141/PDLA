@@ -14,6 +14,9 @@ public class NewFrame extends JFrame{ //test
         int screenHeight = (int) screenSize.getHeight();
         setSize(screenWidth, screenHeight);
 
+        // Center the frame on the screen
+        setLocationRelativeTo(null);
+
         this.setTitle("Volunteering App");
     }
 
