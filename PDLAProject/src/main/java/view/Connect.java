@@ -3,6 +3,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.util.UUID;
 
 import controllers.NewUser;
@@ -40,15 +41,22 @@ public class Connect {
                 String Password = new String(PasswordChars);
 
                 //get the user id
-                String Id = NewUser.getIdWithEmail(Email, Password);
+                String Id = null;
+                try {
+                    Id = NewUser.getIdWithEmail(Email, Password);
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
                 System.out.println(Id);
 
                 //case where the person is a help seeker
                 if (Id!=null) {
                     if (Id.charAt(0) == 'H') {
                         HelpSeekerPage HelpSeekerPage = new HelpSeekerPage(Id);
+                        ConnectFrame.dispose();
                     } else if (Id.charAt(0) == 'V') {
                         VolunteerPage VolunteerPage = new VolunteerPage(Id);
+                        ConnectFrame.dispose();
                     }
                 }
                 else {

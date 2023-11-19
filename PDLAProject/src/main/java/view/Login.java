@@ -15,6 +15,7 @@ import java.util.UUID;
 public class Login {
 
     public Login() {
+
         NewFrame LoginFrame = new NewFrame();
 
         //components of the login page
@@ -75,7 +76,7 @@ public class Login {
                     newUserHandler.addNewUser(newUser);
 
                     // open volunteer frame after login
-                    LoginFrame.dipose();
+                    LoginFrame.dispose();
                     VolunteerPage VolunteerPage = new VolunteerPage(Volunteerid);
 
 
@@ -93,6 +94,7 @@ public class Login {
                     newUserHandler.addNewUser(newUser);
 
                     // open help seeker frame after login
+                    LoginFrame.dispose();
                     HelpSeekerPage HelpSeekerPage = new HelpSeekerPage(HelpSeekerid);
                 }
 

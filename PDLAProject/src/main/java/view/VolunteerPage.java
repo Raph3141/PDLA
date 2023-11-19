@@ -16,14 +16,14 @@ public class VolunteerPage {
         NewFrame VolunteerFrame = new NewFrame();
 
         // Retrieve requests from the database
-        List<Requests> requests = new Requests().getRequests();
+        List<Requests> Requests = new Requests().getRequests();
 
         // Create a panel to hold the list of requests
         JPanel RequestPanel = new JPanel();
         RequestPanel.setLayout(new BoxLayout(RequestPanel, BoxLayout.Y_AXIS));
 
         // Add each request to the panel
-        for (Requests request : requests) {
+        for (Requests request : Requests) {
             JLabel RequestLabel = new JLabel("Date of the request: " + request.getDate() + ", Location: " + request.getLocation() + "Description of the request :" + request.getDescription());
             RequestPanel.add(RequestLabel);
 
@@ -33,7 +33,7 @@ public class VolunteerPage {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     // Add volunteer's ID to the selected request
-
+                    
 
                     // Provide feedback to the user
                     JOptionPane.showMessageDialog(null, "You are now assigned to this request.");

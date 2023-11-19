@@ -5,12 +5,12 @@ import model.Users;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+
 
 public class NewUser {
 
-    private static List<Users> UsersList = new ArrayList<>();
     public void addNewUser(Users user) {
         Connection connection = DatabaseConnection.getConnection();
 
@@ -37,11 +37,8 @@ public class NewUser {
                 String Email = user.getEmail();
                 String Password = user.getPassword();
 
-                // Add the new user to the UsersList
                 model.Users newUser = new model.Users(Id, FirstName, LastName, Email, Password);
-                //controllers.NewUser newUserHandler = new controllers.NewUser();
-                UsersList.add(newUser);
-                System.out.println(UsersList);
+
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -50,16 +47,33 @@ public class NewUser {
     }
 
     //for the connect frame
-    public static String getIdWithEmail(String email, String password) {
-        for (Users user : UsersList) {
-            System.out.println("test1");
-            if (user.getEmail().equals(email) && user.getPassword().equals(password)) {
-                System.out.println("test");
-                return user.getId();
+    public static String getIdWithEmail(String email, String password) throws SQLException {
+        Connection connection = DatabaseConnection.getConnection();
+
+        String sql = "SELECT * FROM Users WHERE email = '" + email + "'";
+
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            // statement.setString(1, email);
+            //statement.setString(2, password);
+            try (ResultSet resultSet = statement.executeQuery()) {
+
+                // get the id
+                if (resultSet.next()) {
+                    // If there are results, get the id
+                    return resultSet.getString("idUsers");
+                } else {
+                    // No matching user found
+                    System.out.println("No matching user found.");
+                    return null;
+
+                }
+            } catch (SQLException e) {
+                // Return null or some indicator if no matching user is found
+                System.out.println("SQLException :" + e.getMessage());
+                return null;
             }
+
         }
-        // Return null or some indicator if no matching user is found
-        System.out.println("No matching user found.");
-        return null;
     }
+
 }
