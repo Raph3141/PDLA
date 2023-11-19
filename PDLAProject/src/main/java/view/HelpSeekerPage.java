@@ -1,9 +1,12 @@
 package view;
 
+import model.Requests;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.UUID;
 
 public class HelpSeekerPage {
 
@@ -41,7 +44,7 @@ public class HelpSeekerPage {
                 String Description = DescriptionField.getText();
 
                 //insert the request into the database
-                model.Request newRequest = new model.Request(null, HelpSeekerid, null, date, Location, null, Description); // we set the idvolunteer and description with null until a volunteer accepts the request
+                Requests newRequest = new Requests(null, HelpSeekerid, null, date, Location, null, Description); // we set the idvolunteer and description with null until a volunteer accepts the request
                 controllers.NewRequest newRequestHandler = new controllers.NewRequest();
                 newRequestHandler.addNewRequest(newRequest);
 
@@ -52,5 +55,8 @@ public class HelpSeekerPage {
 
         HelpSeekerFrame.add(new JLabel()); //to have everything aligned
         HelpSeekerFrame.add(SubmitButton);
+    }
+    public static void main(String[] args) {
+        HelpSeekerPage helpSeekerPage = new HelpSeekerPage("h"+ UUID.randomUUID().toString().substring(1));
     }
 }

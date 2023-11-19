@@ -9,10 +9,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Request {
+public class Requests {
     Connection connection = DatabaseConnection.getConnection();
 
-    private String requestID;
+    private String idRequest;
     private String idHelpSeeker;
     private String idVolunteer;
     private String date;
@@ -20,8 +20,8 @@ public class Request {
     private String Status;
     private String Description;
 
-    public Request(String requestID, String idHelpSeeker, String idVolunteer, String date, String Location, String Status, String Description) {
-        this.requestID = requestID;
+    public Requests(String idRequest, String idHelpSeeker, String idVolunteer, String date, String Location, String Status, String Description) {
+        this.idRequest = idRequest;
         this.idHelpSeeker = idHelpSeeker;
         this.idVolunteer = idVolunteer;
         this.date = date;
@@ -30,12 +30,12 @@ public class Request {
         this.Description = Description;
     }
 
-    public Request() {
+    public Requests() {
         // You can initialize default values or leave them null/empty
     }
 
     public String getRequestID() {
-        return requestID;
+        return idRequest;
     }
 
     public String getIdHelpSeeker() {
@@ -62,16 +62,16 @@ public class Request {
         return Status;
     }
 
-    public List<Request> getRequests() {
+    public List<Requests> getRequests() {
         String selectQuery = "SELECT * FROM requests"; // Assuming your table name is 'requests'
-        List<Request> requestList = new ArrayList<>();
+        List<Requests> requestList = new ArrayList<>();
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(selectQuery)) {
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                Request request = new Request(
-                        resultSet.getString("requestID"),
+                Requests request = new Requests(
+                        resultSet.getString("idRequest"),
                         resultSet.getString("idHelpSeeker"),
                         resultSet.getString("idVolunteer"),
                         resultSet.getString("Date"),
