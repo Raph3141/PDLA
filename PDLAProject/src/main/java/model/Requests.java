@@ -63,7 +63,7 @@ public class Requests {
     }
 
     public List<Requests> getRequests() {
-        String selectQuery = "SELECT * FROM requests"; // Assuming your table name is 'requests'
+        String selectQuery = "SELECT * FROM Requests"; // Assuming your table name is 'requests'
         List<Requests> requestList = new ArrayList<>();
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(selectQuery)) {

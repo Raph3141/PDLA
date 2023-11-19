@@ -1,5 +1,6 @@
 package view;
 
+import controllers.NewRequest;
 import model.Requests;
 
 import javax.swing.*;
@@ -24,7 +25,7 @@ public class VolunteerPage {
 
         // Add each request to the panel
         for (Requests request : Requests) {
-            JLabel RequestLabel = new JLabel("Date of the request: " + request.getDate() + ", Location: " + request.getLocation() + "Description of the request :" + request.getDescription());
+            JLabel RequestLabel = new JLabel("Date of the request: " + request.getDate() + ", Location: " + request.getLocation() + ", Description of the request :" + request.getDescription());
             RequestPanel.add(RequestLabel);
 
             //choose a request
@@ -33,8 +34,9 @@ public class VolunteerPage {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     // Add volunteer's ID to the selected request
-                    
 
+                    String requestId = request.getRequestID();
+                    new NewRequest().UpdateRequest(requestId, Volunteerid);
                     // Provide feedback to the user
                     JOptionPane.showMessageDialog(null, "You are now assigned to this request.");
                 }

@@ -34,4 +34,30 @@ public class NewRequest {
             // Handle the exception as needed
         }
     }
+
+    //update volunteerid of the request when it is selected and the status
+    public void UpdateRequest(String requestId, String volunteerId) {
+        Connection connection = DatabaseConnection.getConnection();
+
+        try {
+            // Using PreparedStatement to prevent SQL injection
+            String updateQuery = "UPDATE Requests SET idVolunteer = ?, Status = 'taken' WHERE idRequest = ?";
+
+            try (PreparedStatement preparedStatement = connection.prepareStatement(updateQuery)) {
+                preparedStatement.setString(1, volunteerId);
+                preparedStatement.setString(2, requestId);
+
+                int rowsUpdated = preparedStatement.executeUpdate();
+
+                if (rowsUpdated > 0) {
+                    System.out.println("Request updated successfully");
+                } else {
+                    System.out.println("No request found with id: " + requestId);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Handle the exception as needed
+        }
+    }
 }
