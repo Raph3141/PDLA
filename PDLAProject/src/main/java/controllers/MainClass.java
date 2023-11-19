@@ -14,9 +14,9 @@ public class MainClass {
            // Users newUser = new Users("test4", "John", "Doe", "john.doe@example.com", "password123");
            // NewUser newUserHandler = new NewUser();
            // newUserHandler.addNewUser(newUser);
-            Requests newRequest = new Requests("exampleRequestID", "exampleHelpSeekerID", null, "2023-11-17", "Example Location", "available", "Example Description");
-            NewRequest newRequestHandler = new NewRequest();
-            newRequestHandler.addNewRequest(newRequest);
+            // Requests newRequest = new Requests("exampleRequestID", "exampleHelpSeekerID", null, "2023-11-17", "Example Location", "available", "Example Description");
+            //NewRequest newRequestHandler = new NewRequest();
+           // newRequestHandler.addNewRequest(newRequest);
             //Volunteers newVolunteer = new Volunteers("v2", "t", "t", "t", "t");
             //NewVolunteer newVolunteerHandler = new NewVolunteer();
             //newVolunteerHandler.addNewVolunteer(newVolunteer);
@@ -25,7 +25,7 @@ public class MainClass {
             //newHelpSeekerHandler.addNewHelpSeeker(newHelpSeeker);
 
 
-            //Login log = new Login();
+            Login log = new Login();
 
         } finally {
             // closes the connection when done

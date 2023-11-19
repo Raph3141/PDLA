@@ -2,7 +2,6 @@ package controllers;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class DatabaseConnection {
@@ -12,14 +11,14 @@ public class DatabaseConnection {
     private static Connection connection;
 
     // Static method to get a database connection
-    public static Connection getConnection() { //test
+    public static Connection getConnection() {
         if (connection == null) {
             try {
                 // Create the connection
                 connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
                 System.out.println("Connected to the database");
             } catch (SQLException e) {
-                e.printStackTrace();
+                handleSQLException(e);
             }
         }
         return connection;
@@ -32,8 +31,19 @@ public class DatabaseConnection {
                 connection.close();
                 System.out.println("Disconnected from the database");
             } catch (SQLException e) {
-                e.printStackTrace();
+                handleSQLException(e);
             }
         }
+    }
+
+    // Handle SQL exceptions
+    private static void handleSQLException(SQLException e) {
+        // Log the exception or throw a custom exception, depending on your application's needs
+        e.printStackTrace();
+    }
+
+    // Ensure the connection is closed when the application shuts down
+    static {
+        Runtime.getRuntime().addShutdownHook(new Thread(DatabaseConnection::closeConnection));
     }
 }

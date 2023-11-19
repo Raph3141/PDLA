@@ -31,7 +31,7 @@ public class Requests {
     }
 
     public Requests() {
-        // You can initialize default values or leave them null/empty
+
     }
 
     public String getRequestID() {
@@ -63,7 +63,7 @@ public class Requests {
     }
 
     public List<Requests> getRequests() {
-        String selectQuery = "SELECT * FROM Requests"; // Assuming your table name is 'requests'
+        String selectQuery = "SELECT * FROM Requests";
         List<Requests> requestList = new ArrayList<>();
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(selectQuery)) {

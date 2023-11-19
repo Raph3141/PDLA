@@ -56,8 +56,13 @@ public class NewRequest {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            handleSQLException(e);
             // Handle the exception as needed
         }
+    }
+
+    // Handle SQL exceptions
+    private void handleSQLException(SQLException e) {
+        e.printStackTrace();
     }
 }
