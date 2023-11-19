@@ -69,7 +69,7 @@ public class Connect {
         ConnectFrame.add(ConnectButton);
     }
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         Connect connect = new Connect();
-    }
+    }*/
 }

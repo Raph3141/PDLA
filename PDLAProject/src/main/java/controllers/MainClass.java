@@ -1,35 +1,64 @@
 package controllers;
+
 import model.*;
 import view.Login;
+import view.WelcomePage;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+
 public class MainClass {
     public static void main(String[] args) {
         Connection connection = DatabaseConnection.getConnection();
 
         try {
-            // Use the connection for database operations
+            //test various functionalities
+            /*testUserRegistration();
+            testRequestCreation();
+            testVolunteerRegistration();
+            testHelpSeekerRegistration();*/
 
-           // Users newUser = new Users("test4", "John", "Doe", "john.doe@example.com", "password123");
-           // NewUser newUserHandler = new NewUser();
-           // newUserHandler.addNewUser(newUser);
-            // Requests newRequest = new Requests("exampleRequestID", "exampleHelpSeekerID", null, "2023-11-17", "Example Location", "available", "Example Description");
-            //NewRequest newRequestHandler = new NewRequest();
-           // newRequestHandler.addNewRequest(newRequest);
-            //Volunteers newVolunteer = new Volunteers("v2", "t", "t", "t", "t");
-            //NewVolunteer newVolunteerHandler = new NewVolunteer();
-            //newVolunteerHandler.addNewVolunteer(newVolunteer);
-            //HelpSeekers newHelpSeeker = new HelpSeekers("v1", "t", "t", "t", "t");
-            //NewHelpSeeker newHelpSeekerHandler = new NewHelpSeeker();
-            //newHelpSeekerHandler.addNewHelpSeeker(newHelpSeeker);
+            WelcomePage welcomePage = new WelcomePage();
 
-
-            Login log = new Login();
+            // Wait until the WelcomePage is closed
+            synchronized (welcomePage) {
+                try {
+                    welcomePage.wait();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
 
         } finally {
-            // closes the connection when done
-            DatabaseConnection.closeConnection();
+            DatabaseConnection.closeConnection(); // Close the connection when done
         }
+    }
+
+    // Example method for testing user registration
+    private static void testUserRegistration() throws SQLException {
+        Users newUser = new Users("idUser UReg", "Name UReg", "Surname UReg", "mail UReg", "password UReg");
+        NewUser newUserHandler = new NewUser();
+        newUserHandler.addNewUser(newUser);
+    }
+
+    // Example method for testing request creation
+    private static void testRequestCreation() throws SQLException {
+        Requests newRequest = new Requests("idRequest testing method request", "idHelpSeeker testing method request", null, "2002-08-17", "Location testing method request", "available", "description testing method request");
+        NewRequest newRequestHandler = new NewRequest();
+        newRequestHandler.addNewRequest(newRequest);
+    }
+
+    // Example method for testing volunteer registration
+    private static void testVolunteerRegistration() throws SQLException {
+        Volunteers newVolunteer = new Volunteers("idV VReg", "Name VReg", "Surame VReg", "mail VReg", "password VReg");
+        NewVolunteer newVolunteerHandler = new NewVolunteer();
+        newVolunteerHandler.addNewVolunteer(newVolunteer);
+    }
+
+    // Example method for testing help seeker registration
+    private static void testHelpSeekerRegistration() throws SQLException {
+        HelpSeekers newHelpSeeker = new HelpSeekers("idH HReg", "Name HReg", "Surname HReg", "mail HReg", "password HReg");
+        NewHelpSeeker newHelpSeekerHandler = new NewHelpSeeker();
+        newHelpSeekerHandler.addNewHelpSeeker(newHelpSeeker);
     }
 }

@@ -58,7 +58,7 @@ public class HelpSeekerPage {
         HelpSeekerFrame.add(new JLabel()); //to have everything aligned
         HelpSeekerFrame.add(SubmitButton);
     }
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         HelpSeekerPage helpSeekerPage = new HelpSeekerPage("h"+ UUID.randomUUID().toString().substring(1));
-    }
+    }*/
 }

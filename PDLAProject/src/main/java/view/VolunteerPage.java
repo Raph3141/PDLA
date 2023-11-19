@@ -51,9 +51,9 @@ public class VolunteerPage {
         VolunteerFrame.add(RequestPanel, BorderLayout.CENTER);
 
     }
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
        VolunteerPage volunteerPage = new VolunteerPage("V"+UUID.randomUUID().toString().substring(1));
-    }
+    }*/
 
 }
 

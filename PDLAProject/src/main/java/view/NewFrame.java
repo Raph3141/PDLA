@@ -20,11 +20,11 @@ public class NewFrame extends JFrame{ //test
         this.setTitle("Volunteering App");
     }
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
 
         NewFrame newFr = new NewFrame();
 
-    }
+    }*/
 
 }
 
