@@ -36,12 +36,12 @@ public class HelpSeekerPage {
         SubmitButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String Date = DateField.getText();
+                String date = DateField.getText();
                 String Location = LocationField.getText();
                 String Description = DescriptionField.getText();
 
                 //insert the request into the database
-                model.Request newRequest = new model.Request(HelpSeekerid, null, Date, Location, Description, null); // we set the idvolunteer and description with null until a volunteer accepts the request
+                model.Request newRequest = new model.Request(null, HelpSeekerid, null, date, Location, null, Description); // we set the idvolunteer and description with null until a volunteer accepts the request
                 controllers.NewRequest newRequestHandler = new controllers.NewRequest();
                 newRequestHandler.addNewRequest(newRequest);
 

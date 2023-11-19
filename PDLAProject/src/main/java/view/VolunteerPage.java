@@ -1,5 +1,7 @@
 package view;
 
+import model.Request;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -13,7 +15,7 @@ public class VolunteerPage {
         NewFrame VolunteerFrame = new NewFrame();
 
         // Retrieve requests from the database
-        List<model.Request> requests = GetRequests();
+        List<Request> requests = new Request().getRequests();
 
         // Create a panel to hold the list of requests
         JPanel RequestPanel = new JPanel();
