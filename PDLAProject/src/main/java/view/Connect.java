@@ -4,12 +4,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
-import java.util.UUID;
 
 import controllers.NewUser;
-import model.Users;
-import model.Volunteers;
-import view.NewFrame;
+
 public class Connect {
 
     Connect() {
@@ -47,7 +44,6 @@ public class Connect {
                 } catch (SQLException ex) {
                     throw new RuntimeException(ex);
                 }
-                System.out.println(Id);
 
                 //case where the person is a help seeker
                 if (Id!=null) {
@@ -55,7 +51,7 @@ public class Connect {
                         HelpSeekerPage HelpSeekerPage = new HelpSeekerPage(Id);
                         ConnectFrame.dispose();
                     } else if (Id.charAt(0) == 'V') {
-                        VolunteerPage VolunteerPage = new VolunteerPage(Id);
+                        ChooseOrSeeRequest ChooseorSee = new ChooseOrSeeRequest(Id);
                         ConnectFrame.dispose();
                     }
                 }

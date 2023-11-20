@@ -8,13 +8,13 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
-import java.util.UUID;
+import java.util.Objects;
 
-public class VolunteerPage {
+public class AvailableRequests {
 
-    VolunteerPage(String Volunteerid) {
+    AvailableRequests(String Volunteerid) {
 
-        NewFrame VolunteerFrame = new NewFrame();
+        NewFrame AvailableRequestsFrame = new NewFrame();
 
         // Retrieve requests from the database
         List<Requests> Requests = new Requests().getRequests();
@@ -25,6 +25,7 @@ public class VolunteerPage {
 
         // Add each request to the panel
         for (Requests request : Requests) {
+            if (Objects.equals(request.getStatus(), "available")){
             JLabel RequestLabel = new JLabel("Date of the request: " + request.getDate() + ", Location: " + request.getLocation() + ", Description of the request :" + request.getDescription());
             RequestPanel.add(RequestLabel);
 
@@ -44,11 +45,11 @@ public class VolunteerPage {
 
             // Add the button to the panel
             RequestPanel.add(ChooseButton);
-        }
+        }}
 
         // Show the requests
-        VolunteerFrame.setLayout(new BorderLayout());
-        VolunteerFrame.add(RequestPanel, BorderLayout.CENTER);
+        AvailableRequestsFrame.setLayout(new BorderLayout());
+        AvailableRequestsFrame.add(RequestPanel, BorderLayout.CENTER);
 
     }
     /*public static void main(String[] args) {

@@ -4,12 +4,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import controllers.DatabaseConnection;
 import model.HelpSeekers;
 import model.Volunteers;
-import view.NewFrame;
 
-import java.sql.Connection;
 import java.util.UUID;
 
 public class Login {
@@ -77,7 +74,7 @@ public class Login {
 
                     // open volunteer frame after login
                     LoginFrame.dispose();
-                    VolunteerPage VolunteerPage = new VolunteerPage(Volunteerid);
+                    AvailableRequests AvailableRequests = new AvailableRequests(Volunteerid);
 
 
                 } else if (selectedUser.equals("HelpSeeker")) {

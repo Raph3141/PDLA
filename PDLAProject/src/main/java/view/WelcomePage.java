@@ -14,6 +14,7 @@ public class WelcomePage {
         JButton LoginButton = new JButton("Login");
         JButton ConnectButton = new JButton("Connect");
 
+
         // Add action listeners to the buttons
         LoginButton.addActionListener(new ActionListener() {
             @Override
@@ -35,9 +36,13 @@ public class WelcomePage {
 
         // Create a panel to hold the buttons
         JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new GridLayout(2, 1));
+        buttonPanel.setLayout(new GridLayout(3, 2));
+        buttonPanel.add(new JLabel());
+        buttonPanel.add(new JLabel());
         buttonPanel.add(LoginButton);
         buttonPanel.add(ConnectButton);
+        buttonPanel.add(new JLabel());
+        buttonPanel.add(new JLabel());
 
         // Add the panel to the frame
         WelcomeFrame.add(buttonPanel);
