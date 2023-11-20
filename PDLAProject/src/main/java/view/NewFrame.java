@@ -9,10 +9,10 @@ public class NewFrame extends JFrame{ //test
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //to exit the window
         //make the frame of the size of the screen
-        /*Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         int screenWidth = (int) screenSize.getWidth();
         int screenHeight = (int) screenSize.getHeight();
-        setSize(screenWidth, screenHeight);*/
+        setSize(screenWidth, screenHeight);
         
 
         // Center the frame on the screen

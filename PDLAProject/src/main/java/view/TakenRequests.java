@@ -13,7 +13,20 @@ import java.util.Objects;
 public class TakenRequests {
 
     TakenRequests(String idVolunteer){
+
         NewFrame TakenRequestFrame = new NewFrame();
+
+        JPanel logoutPanel = new JPanel();
+        JButton LogoutButton = new JButton("Log Out");
+        LogoutButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Perform logout actions, e.g., close the current frame and open the login frame
+                TakenRequestFrame.dispose();
+                WelcomePage welcomePage = new WelcomePage();
+            }
+        });
+        logoutPanel.add(LogoutButton);
 
         List<Requests> Requests = new Requests().getRequests();
 
@@ -30,8 +43,9 @@ public class TakenRequests {
             }
 
         // Show the requests
-        TakenRequestFrame.setLayout(new BorderLayout());
-        TakenRequestFrame.add(RequestPanel, BorderLayout.CENTER);
+        TakenRequestFrame.setLayout(new GridLayout(2,1));
+        TakenRequestFrame.add(logoutPanel);
+        TakenRequestFrame.add(RequestPanel);
 
     }
 }

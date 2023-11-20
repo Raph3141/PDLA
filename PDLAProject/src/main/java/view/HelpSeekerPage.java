@@ -14,6 +14,18 @@ public class HelpSeekerPage {
 
         NewFrame HelpSeekerFrame = new NewFrame();
 
+        JPanel logoutPanel = new JPanel();
+        JButton LogoutButton = new JButton("Log Out");
+        LogoutButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Perform logout actions, e.g., close the current frame and open the login frame
+                HelpSeekerFrame.dispose();
+                WelcomePage welcomePage = new WelcomePage();
+            }
+        });
+        logoutPanel.add(LogoutButton);
+
         //components of the help seeker page
         JLabel DateLabel = new JLabel("When do I need help (enter a date of the form YYYY-MM-DD): ");
         JLabel LocationLabel = new JLabel("Where do I need help: ");
@@ -26,7 +38,8 @@ public class HelpSeekerPage {
         JTextField DescriptionField = new JTextField(300);
 
         //add info to the frame
-        HelpSeekerFrame.setLayout(new GridLayout(4, 2));
+        HelpSeekerFrame.setLayout(new GridLayout(5, 2));
+        HelpSeekerFrame.add(logoutPanel);
         HelpSeekerFrame.add(DateLabel);
         HelpSeekerFrame.add(DateField);
         HelpSeekerFrame.add(LocationLabel);

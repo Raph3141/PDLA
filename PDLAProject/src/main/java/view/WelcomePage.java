@@ -34,9 +34,10 @@ public class WelcomePage {
             }
         });
 
-        // Create a panel to hold the buttons
-        JPanel buttonPanel = new JPanel();
-        buttonPanel.setLayout(new GridLayout(3, 2));
+
+        JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        buttonPanel.setBounds(70,100,200,100);
+        //buttonPanel.setLayout(new GridLayout(3, 2));
        /* buttonPanel.add(new JLabel());
         buttonPanel.add(new JLabel());*/
         buttonPanel.add(LoginButton);
@@ -45,7 +46,9 @@ public class WelcomePage {
         buttonPanel.add(new JLabel());*/
 
         // Add the panel to the frame
+        WelcomeFrame.setLayout(new BorderLayout());
         WelcomeFrame.add(buttonPanel);
+        WelcomeFrame.setSize(200,300);
         WelcomeFrame.pack();
         WelcomeFrame.setLocationRelativeTo(null);
 

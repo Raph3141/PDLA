@@ -16,14 +16,25 @@ public class AvailableRequests {
 
         NewFrame AvailableRequestsFrame = new NewFrame();
 
-        // Retrieve requests from the database
+        JPanel logoutPanel = new JPanel();
+        JButton LogoutButton = new JButton("Log Out");
+        LogoutButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                AvailableRequestsFrame.dispose();
+                WelcomePage welcomePage = new WelcomePage();
+            }
+        });
+        logoutPanel.add(LogoutButton);
+
+
+        // get requests from database
         List<Requests> Requests = new Requests().getRequests();
 
-        // Create a panel to hold the list of requests
         JPanel RequestPanel = new JPanel();
         RequestPanel.setLayout(new BoxLayout(RequestPanel, BoxLayout.Y_AXIS));
 
-        // Add each request to the panel
+        // Add requests to panel
         for (Requests request : Requests) {
             if (Objects.equals(request.getStatus(), "available")){
             JLabel RequestLabel = new JLabel("Date of the request: " + request.getDate() + ", Location: " + request.getLocation() + ", Description of the request :" + request.getDescription());
@@ -48,8 +59,9 @@ public class AvailableRequests {
         }}
 
         // Show the requests
-        AvailableRequestsFrame.setLayout(new BorderLayout());
+        AvailableRequestsFrame.setLayout(new GridLayout(4, 1));
         AvailableRequestsFrame.add(RequestPanel, BorderLayout.CENTER);
+        AvailableRequestsFrame.add(logoutPanel);
 
     }
     /*public static void main(String[] args) {

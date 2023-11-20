@@ -14,6 +14,18 @@ public class ChooseOrSeeRequest {
 
         NewFrame ChooseFrame = new NewFrame();
 
+        JPanel logoutPanel = new JPanel();
+        JButton LogoutButton = new JButton("Log Out");
+        LogoutButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Perform logout actions, e.g., close the current frame and open the login frame
+                ChooseFrame.dispose();
+                WelcomePage welcomePage = new WelcomePage();
+            }
+        });
+        logoutPanel.add(LogoutButton);
+
         JLabel MessageLabel = new JLabel("What do you want to do? ");
 
         JButton ChooseButton = new JButton("Choose an available mission.");
@@ -27,21 +39,21 @@ public class ChooseOrSeeRequest {
         });
 
         JButton SeeButton = new JButton("See taken requests.");
-        ChooseButton.addActionListener(new ActionListener() {
+        SeeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                TakenRequests chooseRequest = new TakenRequests(idVolunteer);
+                TakenRequests takenRequest = new TakenRequests(idVolunteer);
                 ChooseFrame.dispose();
             }
         });
 
         //add everything to the frame
-        ChooseFrame.setLayout(new GridLayout(3, 1));
+        ChooseFrame.setLayout(new GridLayout(4, 1));
+        ChooseFrame.add(logoutPanel);
         ChooseFrame.add(MessageLabel);
         ChooseFrame.add(ChooseButton);
         ChooseFrame.add(SeeButton);
-
     }
 }
 
