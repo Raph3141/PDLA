@@ -12,7 +12,8 @@ public class NewFrame extends JFrame{ //test
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         int screenWidth = (int) screenSize.getWidth();
         int screenHeight = (int) screenSize.getHeight();
-        setSize(screenWidth, screenHeight);
+        setSize(500, 400);
+
         
 
         // Center the frame on the screen

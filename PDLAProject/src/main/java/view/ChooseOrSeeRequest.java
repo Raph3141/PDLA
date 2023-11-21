@@ -14,7 +14,8 @@ public class ChooseOrSeeRequest {
 
         NewFrame ChooseFrame = new NewFrame();
 
-        JPanel logoutPanel = new JPanel();
+        JPanel logoutPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+
         JButton LogoutButton = new JButton("Log Out");
         LogoutButton.addActionListener(new ActionListener() {
             @Override
@@ -25,6 +26,17 @@ public class ChooseOrSeeRequest {
             }
         });
         logoutPanel.add(LogoutButton);
+
+        JButton PreviousButton = new JButton("Previous");
+        PreviousButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                ChooseFrame.dispose();
+                Connect connectPage = new Connect();
+            }
+        });
+        logoutPanel.add(PreviousButton);
 
         JLabel MessageLabel = new JLabel("What do you want to do? ");
 

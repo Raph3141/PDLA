@@ -68,6 +68,7 @@ public class Connect {
         ConnectFrame.setLayout(new BoxLayout(ConnectFrame.getContentPane(), BoxLayout.Y_AXIS));
 
         ConnectFrame.add(PreviousButton);
+        ConnectFrame.add(Box.createVerticalStrut(10));
         
         JPanel emailPanel = new JPanel(new FlowLayout());
         emailPanel.add(EmailLabel);

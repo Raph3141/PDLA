@@ -102,28 +102,30 @@ public class Login {
 
         LoginFrame.add(usersComboBox);
 
-        JPanel firstNamePanel = new JPanel(new FlowLayout());
+        JPanel firstNamePanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         firstNamePanel.add(FirstNameLabel);
         firstNamePanel.add(FirstNameField);
         LoginFrame.add(firstNamePanel);
         LoginFrame.add(Box.createVerticalStrut(10));
 
-        JPanel lastNamePanel = new JPanel(new FlowLayout());
+        JPanel lastNamePanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         lastNamePanel.add(LastNameLabel);
         lastNamePanel.add(LastNameField);
         LoginFrame.add(firstNamePanel);
         LoginFrame.add(Box.createVerticalStrut(10));
 
-        JPanel emailPanel = new JPanel(new FlowLayout());
+        JPanel emailPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         emailPanel.add(EmailLabel);
         emailPanel.add(EmailField);
         LoginFrame.add(emailPanel);
         LoginFrame.add(Box.createVerticalStrut(10));
 
-        JPanel passwordPanel = new JPanel(new FlowLayout());
+        JPanel passwordPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         passwordPanel.add(PasswordLabel);
         passwordPanel.add(PasswordField);
+
         LoginFrame.add(passwordPanel);
+        LoginFrame.add(Box.createVerticalStrut(10));
         LoginButton.add(Box.createVerticalStrut(10));
 
         LoginFrame.add(LoginButton);

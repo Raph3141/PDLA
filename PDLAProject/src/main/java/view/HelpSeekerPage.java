@@ -10,21 +10,36 @@ import java.util.UUID;
 
 public class HelpSeekerPage {
 
+    private JFrame previousFrame;
+
     HelpSeekerPage(String HelpSeekerid){
 
-        NewFrame HelpSeekerFrame = new NewFrame();
+       NewFrame HelpSeekerFrame = new NewFrame();
 
-        JPanel logoutPanel = new JPanel();
+        JPanel logoutPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+
         JButton LogoutButton = new JButton("Log Out");
         LogoutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Perform logout actions, e.g., close the current frame and open the login frame
-                HelpSeekerFrame.dispose();
-                WelcomePage welcomePage = new WelcomePage();
+                     WelcomePage welcome = new WelcomePage();
+                    HelpSeekerFrame.dispose();
             }
         });
+
         logoutPanel.add(LogoutButton);
+
+        JButton PreviousButton = new JButton("Previous");
+        PreviousButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                HelpSeekerFrame.dispose();
+                Connect connectPage = new Connect();
+            }
+        });
+        logoutPanel.add(PreviousButton);
 
         //components of the help seeker page
         JLabel DateLabel = new JLabel("When do I need help (enter a date of the form YYYY-MM-DD): ");

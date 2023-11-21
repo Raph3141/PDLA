@@ -48,9 +48,7 @@ public class WelcomePage {
         // Add the panel to the frame
         WelcomeFrame.setLayout(new BorderLayout());
         WelcomeFrame.add(buttonPanel);
-        WelcomeFrame.setSize(200,300);
-        WelcomeFrame.pack();
-        WelcomeFrame.setLocationRelativeTo(null);
+        //WelcomeFrame.pack();
 
     }
 

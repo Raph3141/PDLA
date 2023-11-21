@@ -16,7 +16,8 @@ public class AvailableRequests {
 
         NewFrame AvailableRequestsFrame = new NewFrame();
 
-        JPanel logoutPanel = new JPanel();
+        JPanel logoutPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+
         JButton LogoutButton = new JButton("Log Out");
         LogoutButton.addActionListener(new ActionListener() {
             @Override
@@ -27,6 +28,16 @@ public class AvailableRequests {
         });
         logoutPanel.add(LogoutButton);
 
+        JButton PreviousButton = new JButton("Previous");
+        PreviousButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                AvailableRequestsFrame.dispose();
+                ChooseOrSeeRequest Choose = new ChooseOrSeeRequest(Volunteerid);
+            }
+        });
+        logoutPanel.add(PreviousButton);
 
         // get requests from database
         List<Requests> Requests = new Requests().getRequests();
@@ -60,7 +71,7 @@ public class AvailableRequests {
 
         // Show the requests
         AvailableRequestsFrame.setLayout(new BoxLayout(AvailableRequestsFrame.getContentPane(), BoxLayout.Y_AXIS));
-        AvailableRequestsFrame.add(LogoutButton);
+        AvailableRequestsFrame.add(logoutPanel);
         AvailableRequestsFrame.add(Box.createVerticalStrut(10));
         AvailableRequestsFrame.add(RequestPanel);
 

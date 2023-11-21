@@ -16,7 +16,7 @@ public class TakenRequests {
 
         NewFrame TakenRequestFrame = new NewFrame();
 
-        JPanel logoutPanel = new JPanel();
+        JPanel logoutPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         JButton LogoutButton = new JButton("Log Out");
         LogoutButton.addActionListener(new ActionListener() {
             @Override
@@ -27,6 +27,17 @@ public class TakenRequests {
             }
         });
         logoutPanel.add(LogoutButton);
+
+        JButton PreviousButton = new JButton("Previous");
+        PreviousButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                TakenRequestFrame.dispose();
+                ChooseOrSeeRequest Choose = new ChooseOrSeeRequest(idVolunteer);
+            }
+        });
+        logoutPanel.add(PreviousButton);
 
         List<Requests> Requests = new Requests().getRequests();
 
