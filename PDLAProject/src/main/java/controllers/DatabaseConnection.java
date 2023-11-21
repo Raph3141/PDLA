@@ -38,7 +38,7 @@ public class DatabaseConnection {
 
     // Handle SQL exceptions
     private static void handleSQLException(SQLException e) {
-        // Log the exception or throw a custom exception, depending on your application's needs
+        // Log the exception or throw a custom exception
         e.printStackTrace();
     }
 

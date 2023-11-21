@@ -16,8 +16,10 @@ public class AvailableRequests {
 
         NewFrame AvailableRequestsFrame = new NewFrame();
 
+        // Panel to put the logout and previous buttons
         JPanel logoutPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
 
+        // Creation of the logout button
         JButton LogoutButton = new JButton("Log Out");
         LogoutButton.addActionListener(new ActionListener() {
             @Override
@@ -26,22 +28,23 @@ public class AvailableRequests {
                 WelcomePage welcomePage = new WelcomePage();
             }
         });
-        logoutPanel.add(LogoutButton);
+        logoutPanel.add(LogoutButton); // Add the button to the panel
 
+        // Create the previous button
         JButton PreviousButton = new JButton("Previous");
         PreviousButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 AvailableRequestsFrame.dispose();
                 ChooseOrSeeRequest Choose = new ChooseOrSeeRequest(Volunteerid);
             }
         });
-        logoutPanel.add(PreviousButton);
+        logoutPanel.add(PreviousButton); // Add the button to the panel
 
-        // get requests from database
+        // Get requests from database
         List<Requests> Requests = new Requests().getRequests();
 
+        // Panel to put all the requests
         JPanel RequestPanel = new JPanel();
         RequestPanel.setLayout(new BoxLayout(RequestPanel, BoxLayout.Y_AXIS));
 
@@ -51,34 +54,27 @@ public class AvailableRequests {
             JLabel RequestLabel = new JLabel("Date of the request: " + request.getDate() + ", Location: " + request.getLocation() + ", Description of the request :" + request.getDescription());
             RequestPanel.add(RequestLabel);
 
-            //choose a request
+            // Button to choose a request
             JButton ChooseButton = new JButton("Select this request.");
             ChooseButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    // Add volunteer's ID to the selected request
-
                     String requestId = request.getRequestID();
                     new NewRequest().UpdateRequest(requestId, Volunteerid);
-                    // Provide feedback to the user
+
+                    // Confirm that the request was taken
                     JOptionPane.showMessageDialog(null, "You are now assigned to this request.");
                 }
             });
-
-            // Add the button to the panel
-            RequestPanel.add(ChooseButton);
+            RequestPanel.add(ChooseButton);  // Add the button to the panel
         }}
 
-        // Show the requests
+        // Add all the components to the frame
         AvailableRequestsFrame.setLayout(new BoxLayout(AvailableRequestsFrame.getContentPane(), BoxLayout.Y_AXIS));
         AvailableRequestsFrame.add(logoutPanel);
         AvailableRequestsFrame.add(Box.createVerticalStrut(10));
         AvailableRequestsFrame.add(RequestPanel);
 
     }
-    /*public static void main(String[] args) {
-       VolunteerPage volunteerPage = new VolunteerPage("V"+UUID.randomUUID().toString().substring(1));
-    }*/
-
 }
 

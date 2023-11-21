@@ -1,9 +1,6 @@
 package model;
 
-import java.util.List;
-
 public class Users {
-
     protected String id;
     protected String firstName;
     protected String lastName;

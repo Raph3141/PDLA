@@ -58,16 +58,19 @@ public class ChooseOrSeeRequest {
                 TakenRequests takenRequest = new TakenRequests(idVolunteer);
             }
         });
-         JPanel ButtonsPanel = new JPanel(new FlowLayout());
-         ButtonsPanel.add(ChooseButton);
-         ButtonsPanel.add(SeeButton);
 
-        //add everything to the frame
+        // Add all the components to the frame
         ChooseFrame.setLayout(new BoxLayout(ChooseFrame.getContentPane(), BoxLayout.Y_AXIS));
+
         ChooseFrame.add(logoutPanel);
-        ChooseFrame.add(Box.createVerticalStrut(10)); // Add some spacing
+        ChooseFrame.add(Box.createVerticalStrut(10));
+
         ChooseFrame.add(MessageLabel);
-        ChooseFrame.add(Box.createVerticalStrut(10)); // Add some spacing
+        ChooseFrame.add(Box.createVerticalStrut(10));
+
+        JPanel ButtonsPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        ButtonsPanel.add(ChooseButton);
+        ButtonsPanel.add(SeeButton);
         ChooseFrame.add(ButtonsPanel);
 
 

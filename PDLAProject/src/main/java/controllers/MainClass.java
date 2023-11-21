@@ -21,7 +21,7 @@ public class MainClass {
             WelcomePage welcomePage = new WelcomePage();
 
             // Wait until the WelcomePage is closed
-            synchronized (welcomePage) {
+           synchronized (welcomePage) {
                 try {
                     welcomePage.wait();
                 } catch (InterruptedException e) {

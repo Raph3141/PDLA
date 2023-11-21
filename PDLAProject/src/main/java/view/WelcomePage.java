@@ -37,16 +37,13 @@ public class WelcomePage {
 
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         buttonPanel.setBounds(70,100,200,100);
-        //buttonPanel.setLayout(new GridLayout(3, 2));
-       /* buttonPanel.add(new JLabel());
-        buttonPanel.add(new JLabel());*/
+
         buttonPanel.add(LoginButton);
         buttonPanel.add(ConnectButton);
-       /* buttonPanel.add(new JLabel());
-        buttonPanel.add(new JLabel());*/
 
         // Add the panel to the frame
         WelcomeFrame.setLayout(new BorderLayout());
+        WelcomeFrame.setSize(350, 200);
         WelcomeFrame.add(buttonPanel);
         //WelcomeFrame.pack();
 

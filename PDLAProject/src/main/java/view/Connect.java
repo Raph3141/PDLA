@@ -8,11 +8,10 @@ import java.sql.SQLException;
 import controllers.NewUser;
 
 public class Connect {
-
     Connect() {
-
         NewFrame ConnectFrame = new NewFrame();
 
+        // Create the previous button
         JButton PreviousButton = new JButton("Previous");
         PreviousButton.addActionListener(new ActionListener() {
             @Override
@@ -22,16 +21,16 @@ public class Connect {
             }
         });
 
-        //components of the connect page
+        // Components of the connect page
         JLabel EmailLabel = new JLabel("Email: ");
         JLabel PasswordLabel = new JLabel("Enter password: ");
 
-        //fields to enter your info
+        // Fields to enter your information
         JTextField EmailField = new JTextField(30);
         JPasswordField PasswordField = new JPasswordField(20);
 
 
-        //implement the connect button
+        // Create the connect button
         JButton ConnectButton = new JButton("Connect");
         ConnectButton.addActionListener(new ActionListener() {
             @Override
@@ -40,7 +39,7 @@ public class Connect {
                 char[] PasswordChars = PasswordField.getPassword();
                 String Password = new String(PasswordChars);
 
-                //get the user id
+                // Get the user id
                 String Id = null;
                 try {
                     Id = NewUser.getIdWithEmail(Email, Password);
@@ -48,12 +47,12 @@ public class Connect {
                     throw new RuntimeException(ex);
                 }
 
-                //case where the person is a help seeker
+                // Case where the person is a help seeker
                 if (Id!=null) {
                     if (Id.charAt(0) == 'H') {
                         PreviousOrCreateRequest Request = new PreviousOrCreateRequest(Id);
                         ConnectFrame.dispose();
-                    } else if (Id.charAt(0) == 'V') {  //case where the person is a Volunteer
+                    } else if (Id.charAt(0) == 'V') {  // Case where the person is a Volunteer
                         ChooseOrSeeRequest ChooseorSee = new ChooseOrSeeRequest(Id);
                         ConnectFrame.dispose();
                     }
@@ -64,7 +63,7 @@ public class Connect {
             }
         });
 
-        //add info to the frame
+        // Add all components to the frame
         ConnectFrame.setLayout(new BoxLayout(ConnectFrame.getContentPane(), BoxLayout.Y_AXIS));
 
         ConnectFrame.add(PreviousButton);
@@ -85,8 +84,4 @@ public class Connect {
         ConnectFrame.add(ConnectButton);
         ConnectFrame.add(Box.createVerticalGlue());
     }
-
-    /*public static void main(String[] args) {
-        Connect connect = new Connect();
-    }*/
 }
