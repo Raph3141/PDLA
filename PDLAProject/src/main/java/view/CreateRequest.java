@@ -8,11 +8,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.UUID;
 
-public class HelpSeekerPage {
+public class CreateRequest {
 
-    private JFrame previousFrame;
-
-    HelpSeekerPage(String HelpSeekerid){
+    CreateRequest(String HelpSeekerid){
 
        NewFrame HelpSeekerFrame = new NewFrame();
 
@@ -36,13 +34,13 @@ public class HelpSeekerPage {
             public void actionPerformed(ActionEvent e) {
 
                 HelpSeekerFrame.dispose();
-                Connect connectPage = new Connect();
+                PreviousOrCreateRequest Request = new PreviousOrCreateRequest(HelpSeekerid);
             }
         });
         logoutPanel.add(PreviousButton);
 
         //components of the help seeker page
-        JLabel DateLabel = new JLabel("When do I need help (enter a date of the form YYYY-MM-DD): ");
+        JLabel DateLabel = new JLabel("Date (of the form YYYY-MM-DD): ");
         JLabel LocationLabel = new JLabel("Where do I need help: ");
         JLabel DescriptionLabel = new JLabel("Description of my request: ");
        
@@ -51,16 +49,6 @@ public class HelpSeekerPage {
         JTextField DateField = new JTextField(20);
         JTextField LocationField = new JTextField(20);
         JTextField DescriptionField = new JTextField(300);
-
-        //add info to the frame
-        HelpSeekerFrame.setLayout(new GridLayout(5, 2));
-        HelpSeekerFrame.add(logoutPanel);
-        HelpSeekerFrame.add(DateLabel);
-        HelpSeekerFrame.add(DateField);
-        HelpSeekerFrame.add(LocationLabel);
-        HelpSeekerFrame.add(LocationField);
-        HelpSeekerFrame.add(DescriptionLabel);
-        HelpSeekerFrame.add(DescriptionField);
 
         //button to submit the info
         JButton SubmitButton = new JButton("Submit my request");
@@ -83,7 +71,28 @@ public class HelpSeekerPage {
             }
         });
 
-        HelpSeekerFrame.add(new JLabel()); //to have everything aligned
+        //add info to the frame
+        HelpSeekerFrame.setLayout(new BoxLayout(HelpSeekerFrame.getContentPane(), BoxLayout.Y_AXIS));
+        HelpSeekerFrame.add(logoutPanel);
+        HelpSeekerFrame.add(Box.createVerticalStrut(10));
+
+        JPanel DatePanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        DatePanel.add(DateLabel);
+        DatePanel.add(DateField);
+        HelpSeekerFrame.add(DatePanel);
+        HelpSeekerFrame.add(Box.createVerticalStrut(10));
+
+        JPanel LocationPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+        LocationPanel.add(LocationLabel);
+        LocationPanel.add(LocationField);
+        HelpSeekerFrame.add(LocationPanel);
+        HelpSeekerFrame.add(Box.createVerticalStrut(10));
+
+        JPanel DescriptionPanel = new JPanel();
+        DescriptionPanel.add(DescriptionLabel);
+        DescriptionPanel.add(DescriptionField);
+        HelpSeekerFrame.add(DescriptionPanel);
+
         HelpSeekerFrame.add(SubmitButton);
     }
     /*public static void main(String[] args) {

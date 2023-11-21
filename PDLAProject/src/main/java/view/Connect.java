@@ -51,9 +51,9 @@ public class Connect {
                 //case where the person is a help seeker
                 if (Id!=null) {
                     if (Id.charAt(0) == 'H') {
-                        HelpSeekerPage HelpSeekerPage = new HelpSeekerPage(Id);
+                        PreviousOrCreateRequest Request = new PreviousOrCreateRequest(Id);
                         ConnectFrame.dispose();
-                    } else if (Id.charAt(0) == 'V') {
+                    } else if (Id.charAt(0) == 'V') {  //case where the person is a Volunteer
                         ChooseOrSeeRequest ChooseorSee = new ChooseOrSeeRequest(Id);
                         ConnectFrame.dispose();
                     }
@@ -69,7 +69,7 @@ public class Connect {
 
         ConnectFrame.add(PreviousButton);
         ConnectFrame.add(Box.createVerticalStrut(10));
-        
+
         JPanel emailPanel = new JPanel(new FlowLayout());
         emailPanel.add(EmailLabel);
         emailPanel.add(EmailField);

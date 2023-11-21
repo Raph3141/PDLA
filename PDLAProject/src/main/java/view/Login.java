@@ -86,7 +86,7 @@ public class Login {
 
                     // open help seeker frame after login
                     LoginFrame.dispose();
-                    HelpSeekerPage HelpSeekerPage = new HelpSeekerPage(HelpSeekerid);
+                    PreviousOrCreateRequest Request = new PreviousOrCreateRequest(HelpSeekerid);
                 }
 
 
@@ -111,7 +111,7 @@ public class Login {
         JPanel lastNamePanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         lastNamePanel.add(LastNameLabel);
         lastNamePanel.add(LastNameField);
-        LoginFrame.add(firstNamePanel);
+        LoginFrame.add(lastNamePanel);
         LoginFrame.add(Box.createVerticalStrut(10));
 
         JPanel emailPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
