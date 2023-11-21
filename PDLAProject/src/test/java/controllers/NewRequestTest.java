@@ -26,11 +26,11 @@ public class NewRequestTest {
         DatabaseConnection.closeConnection();
     }
 
-    private String generateUniqueRequestId() {
+    private String generateUniqueRequestId() { //generate a random ID for the request to add
         return "TestRequestId_" + UUID.randomUUID().toString();
     }
 
-    private String generateUniqueUpdateRequestId() {
+    private String generateUniqueUpdateRequestId() { //generate a random ID for the request to update
         return "TestUpdateRequestId_" + UUID.randomUUID().toString();
     }
 

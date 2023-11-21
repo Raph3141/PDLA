@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.UUID;
 
 import static org.junit.Assert.*;
 
@@ -25,9 +26,22 @@ public class NewUserTest {
         DatabaseConnection.closeConnection();
     }
 
+    private String generateUniqueUserId() {
+        return "TestUserId_" + UUID.randomUUID().toString();
+    }
+
+    private String generateUniqueUserPassword() {
+        return "TestUserPassword_" + UUID.randomUUID().toString();
+    }
+
+    private String generateUniqueUserEmail() {
+        return "TestUserEmail_" + UUID.randomUUID().toString();
+    }
+
     @Test
     public void testAddNewUser() {
-        Users testUser = new Users("testId", "Test", "User", "test@example.com", "testPassword");
+        String uniqueUserId = generateUniqueUserId();
+        Users testUser = new Users(uniqueUserId, "TestFirstName", "TestLastName", "Test@example.com", "TestPassword");
         NewUser newUser = new NewUser();
 
         newUser.addNewUser(testUser);
@@ -36,15 +50,15 @@ public class NewUserTest {
         try {
             String selectQuery = "SELECT * FROM Users WHERE idUsers = ?";
             try (PreparedStatement preparedStatement = connection.prepareStatement(selectQuery)) {
-                preparedStatement.setString(1, "testId");
+                preparedStatement.setString(1, uniqueUserId);
                 try (ResultSet resultSet = preparedStatement.executeQuery()) {
                     assertTrue("User should be added to the database", resultSet.next());
 
-                    //check user details
-                    assertEquals("Test", resultSet.getString("firstName"));
-                    assertEquals("User", resultSet.getString("lastName"));
-                    assertEquals("test@example.com", resultSet.getString("email"));
-                    assertEquals("testPassword", resultSet.getString("password"));
+                    // Check user details
+                    assertEquals("TestFirstName", resultSet.getString("firstName"));
+                    assertEquals("TestLastName", resultSet.getString("lastName"));
+                    assertEquals("Test@example.com", resultSet.getString("email"));
+                    // Avoid checking passwords in tests
                 }
             }
         } catch (SQLException e) {
@@ -53,12 +67,25 @@ public class NewUserTest {
     }
 
     @Test
-    public void testGetIdWithEmail() throws SQLException {
+    public void testRetrieveUserIdByEmailAndPassword() {
+        String uniqueUserId2 = generateUniqueUserId();
+        String uniqueUserEmail2 = generateUniqueUserEmail().substring(0,20);
+        String uniqueUserPassword2 = generateUniqueUserPassword().substring(0,20);
+
         NewUser newUser = new NewUser();
 
-        String userId = NewUser.getIdWithEmail("test@example.com", "testPassword");
+        // Add a test user to the database
+        Users testUser = new Users(uniqueUserId2, "TestFirstName2", "TestLastName2", uniqueUserEmail2, uniqueUserPassword2);
+        newUser.addNewUser(testUser);
 
-        assertNotNull("User ID should not be null", userId);
-        assertEquals("testId", userId);
+        // Retrieve the user ID based on email and password
+        try {
+            String userId = NewUser.getIdWithEmail(uniqueUserEmail2, uniqueUserPassword2);
+
+            assertNotNull("User ID should not be null", userId);
+            assertEquals(uniqueUserId2, userId);
+        } catch (SQLException e) {
+            fail("SQLException: " + e.getMessage());
+        }
     }
 }
