@@ -24,6 +24,8 @@ public class Login {
             }
         });
 
+        JButton test = new JButton("test");
+
         //components of the login page
         JLabel FirstNameLabel = new JLabel("First Name: ");
         JLabel LastNameLabel = new JLabel("Last Name: ");
@@ -89,7 +91,6 @@ public class Login {
                     PreviousOrCreateRequest Request = new PreviousOrCreateRequest(HelpSeekerid);
                 }
 
-
                 //confirmation message once it is done
                 JOptionPane.showMessageDialog(null, "You have been successfully logged in as: " + FirstName +" " + LastName);
             }
@@ -126,13 +127,8 @@ public class Login {
 
         LoginFrame.add(passwordPanel);
         LoginFrame.add(Box.createVerticalStrut(10));
-        LoginButton.add(Box.createVerticalStrut(10));
 
         LoginFrame.add(LoginButton);
         LoginFrame.add(Box.createVerticalGlue());
     }
-
-    /*public static void main(String[] args) {
-        Login log = new Login();
-    }*/
 }

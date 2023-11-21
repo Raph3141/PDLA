@@ -48,7 +48,8 @@ public class CreateRequest {
         //fields to enter the info about the request
         JTextField DateField = new JTextField(20);
         JTextField LocationField = new JTextField(20);
-        JTextField DescriptionField = new JTextField(300);
+        JTextArea DescriptionField = new JTextArea(5, 50);
+        JScrollPane ScrollPane = new JScrollPane(DescriptionField);
 
         //button to submit the info
         JButton SubmitButton = new JButton("Submit my request");
@@ -88,9 +89,9 @@ public class CreateRequest {
         HelpSeekerFrame.add(LocationPanel);
         HelpSeekerFrame.add(Box.createVerticalStrut(10));
 
-        JPanel DescriptionPanel = new JPanel();
+        JPanel DescriptionPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         DescriptionPanel.add(DescriptionLabel);
-        DescriptionPanel.add(DescriptionField);
+        DescriptionPanel.add(ScrollPane);
         HelpSeekerFrame.add(DescriptionPanel);
 
         HelpSeekerFrame.add(SubmitButton);
