@@ -13,6 +13,15 @@ public class Connect {
 
         NewFrame ConnectFrame = new NewFrame();
 
+        JButton PreviousButton = new JButton("Previous");
+        PreviousButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ConnectFrame.dispose();
+                WelcomePage welcome = new WelcomePage();
+            }
+        });
+
         //components of the connect page
         JLabel EmailLabel = new JLabel("Email: ");
         JLabel PasswordLabel = new JLabel("Enter password: ");
@@ -21,12 +30,6 @@ public class Connect {
         JTextField EmailField = new JTextField(30);
         JPasswordField PasswordField = new JPasswordField(20);
 
-        //add info to the frame
-        ConnectFrame.setLayout(new GridLayout(3, 2));
-        ConnectFrame.add(EmailLabel);
-        ConnectFrame.add(EmailField);
-        ConnectFrame.add(PasswordLabel);
-        ConnectFrame.add(PasswordField);
 
         //implement the connect button
         JButton ConnectButton = new JButton("Connect");
@@ -61,8 +64,25 @@ public class Connect {
             }
         });
 
-        //add the connect button
+        //add info to the frame
+        ConnectFrame.setLayout(new BoxLayout(ConnectFrame.getContentPane(), BoxLayout.Y_AXIS));
+
+        ConnectFrame.add(PreviousButton);
+        
+        JPanel emailPanel = new JPanel(new FlowLayout());
+        emailPanel.add(EmailLabel);
+        emailPanel.add(EmailField);
+        ConnectFrame.add(emailPanel);
+        ConnectFrame.add(Box.createVerticalStrut(10));
+
+        JPanel passwordPanel = new JPanel(new FlowLayout());
+        passwordPanel.add(PasswordLabel);
+        passwordPanel.add(PasswordField);
+        ConnectFrame.add(passwordPanel);
+        ConnectFrame.add(Box.createVerticalStrut(10));
+
         ConnectFrame.add(ConnectButton);
+        ConnectFrame.add(Box.createVerticalGlue());
     }
 
     /*public static void main(String[] args) {

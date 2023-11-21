@@ -59,9 +59,10 @@ public class AvailableRequests {
         }}
 
         // Show the requests
-        AvailableRequestsFrame.setLayout(new GridLayout(4, 1));
-        AvailableRequestsFrame.add(RequestPanel, BorderLayout.CENTER);
-        AvailableRequestsFrame.add(logoutPanel);
+        AvailableRequestsFrame.setLayout(new BoxLayout(AvailableRequestsFrame.getContentPane(), BoxLayout.Y_AXIS));
+        AvailableRequestsFrame.add(LogoutButton);
+        AvailableRequestsFrame.add(Box.createVerticalStrut(10));
+        AvailableRequestsFrame.add(RequestPanel);
 
     }
     /*public static void main(String[] args) {

@@ -33,8 +33,8 @@ public class ChooseOrSeeRequest {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                       AvailableRequests chooseRequest = new AvailableRequests(idVolunteer);
-                        ChooseFrame.dispose();
+                    ChooseFrame.dispose();
+                    AvailableRequests chooseRequest = new AvailableRequests(idVolunteer);
                     }
         });
 
@@ -42,18 +42,23 @@ public class ChooseOrSeeRequest {
         SeeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-                TakenRequests takenRequest = new TakenRequests(idVolunteer);
                 ChooseFrame.dispose();
+                TakenRequests takenRequest = new TakenRequests(idVolunteer);
             }
         });
+         JPanel ButtonsPanel = new JPanel(new FlowLayout());
+         ButtonsPanel.add(ChooseButton);
+         ButtonsPanel.add(SeeButton);
 
         //add everything to the frame
-        ChooseFrame.setLayout(new GridLayout(4, 1));
+        ChooseFrame.setLayout(new BoxLayout(ChooseFrame.getContentPane(), BoxLayout.Y_AXIS));
         ChooseFrame.add(logoutPanel);
+        ChooseFrame.add(Box.createVerticalStrut(10)); // Add some spacing
         ChooseFrame.add(MessageLabel);
-        ChooseFrame.add(ChooseButton);
-        ChooseFrame.add(SeeButton);
+        ChooseFrame.add(Box.createVerticalStrut(10)); // Add some spacing
+        ChooseFrame.add(ButtonsPanel);
+
+
     }
 }
 

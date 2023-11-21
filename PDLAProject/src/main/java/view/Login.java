@@ -15,6 +15,15 @@ public class Login {
 
         NewFrame LoginFrame = new NewFrame();
 
+        JButton PreviousButton = new JButton("Previous");
+        PreviousButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                LoginFrame.dispose();
+                WelcomePage welcome = new WelcomePage();
+            }
+        });
+
         //components of the login page
         JLabel FirstNameLabel = new JLabel("First Name: ");
         JLabel LastNameLabel = new JLabel("Last Name: ");
@@ -30,20 +39,6 @@ public class Login {
         //choose if I want to be a volunteer or a help seeker
         String[] users = {"Volunteer", "HelpSeeker"};
         JComboBox<String> usersComboBox = new JComboBox<>(users);
-
-        //add info to the frame
-        LoginFrame.setLayout(new GridLayout(6, 2));
-        LoginFrame.add(usersComboBox);
-        LoginFrame.add(new JLabel()); //to have everything aligned
-        LoginFrame.add(FirstNameLabel);
-        LoginFrame.add(FirstNameField);
-        LoginFrame.add(LastNameLabel);
-        LoginFrame.add(LastNameField);
-        LoginFrame.add(EmailLabel);
-        LoginFrame.add(EmailField);
-        LoginFrame.add(PasswordLabel);
-        LoginFrame.add(PasswordField);
-
 
         //Implementation of login button
         JButton LoginButton = new JButton("Login");
@@ -74,10 +69,9 @@ public class Login {
 
                     // open volunteer frame after login
                     LoginFrame.dispose();
-                    AvailableRequests AvailableRequests = new AvailableRequests(Volunteerid);
-
-
-                } else if (selectedUser.equals("HelpSeeker")) {
+                    ChooseOrSeeRequest Choosepage = new ChooseOrSeeRequest(Volunteerid);
+                }
+                else if (selectedUser.equals("HelpSeeker")) {
                     String HelpSeekerPrefix = "H";
                     String HelpSeekerid = HelpSeekerPrefix + UUID.randomUUID().toString().substring(1);
 
@@ -101,7 +95,39 @@ public class Login {
             }
         });
 
+        //add info to the frame
+        LoginFrame.setLayout(new BoxLayout(LoginFrame.getContentPane(), BoxLayout.Y_AXIS));
+        LoginFrame.add(PreviousButton);
+        LoginFrame.add(Box.createVerticalStrut(10));
+
+        LoginFrame.add(usersComboBox);
+
+        JPanel firstNamePanel = new JPanel(new FlowLayout());
+        firstNamePanel.add(FirstNameLabel);
+        firstNamePanel.add(FirstNameField);
+        LoginFrame.add(firstNamePanel);
+        LoginFrame.add(Box.createVerticalStrut(10));
+
+        JPanel lastNamePanel = new JPanel(new FlowLayout());
+        lastNamePanel.add(LastNameLabel);
+        lastNamePanel.add(LastNameField);
+        LoginFrame.add(firstNamePanel);
+        LoginFrame.add(Box.createVerticalStrut(10));
+
+        JPanel emailPanel = new JPanel(new FlowLayout());
+        emailPanel.add(EmailLabel);
+        emailPanel.add(EmailField);
+        LoginFrame.add(emailPanel);
+        LoginFrame.add(Box.createVerticalStrut(10));
+
+        JPanel passwordPanel = new JPanel(new FlowLayout());
+        passwordPanel.add(PasswordLabel);
+        passwordPanel.add(PasswordField);
+        LoginFrame.add(passwordPanel);
+        LoginButton.add(Box.createVerticalStrut(10));
+
         LoginFrame.add(LoginButton);
+        LoginFrame.add(Box.createVerticalGlue());
     }
 
     /*public static void main(String[] args) {
