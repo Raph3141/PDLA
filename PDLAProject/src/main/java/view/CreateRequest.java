@@ -37,7 +37,7 @@ public class CreateRequest {
         });
         logoutPanel.add(PreviousButton); // Add button to the panel
 
-        // Components of the help seeker page
+        // Information to enter about your request
         JLabel DateLabel = new JLabel("Date (of the form YYYY-MM-DD): ");
         JLabel LocationLabel = new JLabel("Where do I need help: ");
         JLabel DescriptionLabel = new JLabel("Description of my request: ");

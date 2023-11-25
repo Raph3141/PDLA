@@ -1,7 +1,10 @@
-package controllers;
+package org.classes;
 
-import model.*;
-import view.Login;
+import controllers.*;
+import model.HelpSeekers;
+import model.Requests;
+import model.Users;
+import model.Volunteers;
 import view.WelcomePage;
 
 import java.sql.Connection;
@@ -12,16 +15,11 @@ public class MainClass {
         Connection connection = DatabaseConnection.getConnection();
 
         try {
-            //test various functionalities
-            /*testUserRegistration();
-            testRequestCreation();
-            testVolunteerRegistration();
-            testHelpSeekerRegistration();*/
 
             WelcomePage welcomePage = new WelcomePage();
 
             // Wait until the WelcomePage is closed
-           synchronized (welcomePage) {
+            synchronized (welcomePage) {
                 try {
                     welcomePage.wait();
                 } catch (InterruptedException e) {
@@ -62,3 +60,4 @@ public class MainClass {
         newHelpSeekerHandler.addNewHelpSeeker(newHelpSeeker);
     }
 }
+

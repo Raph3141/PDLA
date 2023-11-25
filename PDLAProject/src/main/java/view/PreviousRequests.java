@@ -16,12 +16,13 @@ public class PreviousRequests {
 
         JLabel Message = new JLabel("My requests :");
 
+        // Panel to add logout and previous buttons
         JPanel logoutPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
+
         JButton LogoutButton = new JButton("Log Out");
         LogoutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Perform logout actions, e.g., close the current frame and open the login frame
                 PreviousRequestsFrame.dispose();
                 WelcomePage welcomePage = new WelcomePage();
             }
@@ -39,11 +40,13 @@ public class PreviousRequests {
         });
         logoutPanel.add(PreviousButton);
 
+        // Array to put the requests in
         ArrayList<model.Requests> MyRequests = (ArrayList<Requests>) new Requests().getRequests();
 
         JPanel MyRequestsPanel = new JPanel( );
         MyRequestsPanel.setLayout(new BoxLayout(MyRequestsPanel, BoxLayout.Y_AXIS));
 
+        // Go through the requests of the database and get the ones with the matching helpSeekr id
         for (Requests request : MyRequests) {
             if (Objects.equals(request.getIdHelpSeeker(), idHelpSeeker)) {
                 MyRequestsPanel.add(new JLabel("Date : "+request.getDate()));

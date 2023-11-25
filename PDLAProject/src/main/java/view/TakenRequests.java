@@ -1,6 +1,5 @@
 package view;
 
-import controllers.NewRequest;
 import model.Requests;
 
 import javax.swing.*;
@@ -21,7 +20,6 @@ public class TakenRequests {
         LogoutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // Perform logout actions, e.g., close the current frame and open the login frame
                 TakenRequestFrame.dispose();
                 WelcomePage welcomePage = new WelcomePage();
             }
@@ -39,13 +37,14 @@ public class TakenRequests {
         });
         logoutPanel.add(PreviousButton);
 
+        // List of all the request
         List<Requests> Requests = new Requests().getRequests();
 
         // Create a panel to hold the list of requests
         JPanel RequestPanel = new JPanel();
         RequestPanel.setLayout(new BoxLayout(RequestPanel, BoxLayout.Y_AXIS));
 
-        // Add each request to the panel
+        // Get the requests that have the matching idVolunteer and add them to the panel
         for (Requests request : Requests) {
             if (Objects.equals(request.getIdVolunteer(), idVolunteer)){
                 JLabel RequestLabel = new JLabel("Date of the request: " + request.getDate() + ", Location: " + request.getLocation() + ", Description of the request :" + request.getDescription());
@@ -57,7 +56,6 @@ public class TakenRequests {
         TakenRequestFrame.setLayout(new GridLayout(2,1));
         TakenRequestFrame.add(logoutPanel);
         TakenRequestFrame.add(RequestPanel);
-
     }
 }
 

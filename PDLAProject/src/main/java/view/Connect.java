@@ -47,6 +47,7 @@ public class Connect {
                     throw new RuntimeException(ex);
                 }
 
+                // We sort the ids between idHelpSeeker (starting with H) and idVolunteer (starting with V)
                 // Case where the person is a help seeker
                 if (Id!=null) {
                     if (Id.charAt(0) == 'H') {
@@ -58,6 +59,7 @@ public class Connect {
                     }
                 }
                 else {
+                    // Case where the person typed the wrong email or password
                     JOptionPane.showMessageDialog(null, "Wrong password or email.");
                 }
             }

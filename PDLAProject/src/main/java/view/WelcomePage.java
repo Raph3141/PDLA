@@ -34,22 +34,15 @@ public class WelcomePage {
             }
         });
 
-
+        // Add the components to the frame
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
         buttonPanel.setBounds(70,100,200,100);
 
         buttonPanel.add(LoginButton);
         buttonPanel.add(ConnectButton);
 
-        // Add the panel to the frame
         WelcomeFrame.setLayout(new BorderLayout());
         WelcomeFrame.setSize(350, 200);
         WelcomeFrame.add(buttonPanel);
-        //WelcomeFrame.pack();
-
     }
-
-    /*public static void main(String[] args) {
-        WelcomePage welcomePage = new WelcomePage();
-    }*/
 }

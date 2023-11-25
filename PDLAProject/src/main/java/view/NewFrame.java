@@ -2,31 +2,19 @@ package view;
 import javax.swing.*;
 import java.awt.*;
 
-
-public class NewFrame extends JFrame{ //test
+// Class to create all the frames of the application
+public class NewFrame extends JFrame{
     NewFrame() {
-        //create and set up the window
+        // Create and set up the window
         this.setVisible(true);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //to exit the window
-        //make the frame of the size of the screen
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        int screenWidth = (int) screenSize.getWidth();
-        int screenHeight = (int) screenSize.getHeight();
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // To exit the window
+        // Size of the frame
         setSize(500, 400);
-
-        
 
         // Center the frame on the screen
         setLocationRelativeTo(null);
 
         this.setTitle("Volunteering App");
     }
-
-    /*public static void main(String[] args) {
-
-        NewFrame newFr = new NewFrame();
-
-    }*/
-
 }
 

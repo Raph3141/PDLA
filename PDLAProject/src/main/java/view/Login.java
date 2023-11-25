@@ -15,6 +15,7 @@ public class Login {
 
         NewFrame LoginFrame = new NewFrame();
 
+        // Create the previous button
         JButton PreviousButton = new JButton("Previous");
         PreviousButton.addActionListener(new ActionListener() {
             @Override
@@ -24,29 +25,28 @@ public class Login {
             }
         });
 
-        JButton test = new JButton("test");
-
-        //components of the login page
+        // Components of the login page
         JLabel FirstNameLabel = new JLabel("First Name: ");
         JLabel LastNameLabel = new JLabel("Last Name: ");
         JLabel EmailLabel = new JLabel("Email: ");
         JLabel PasswordLabel = new JLabel("Enter password: ");
 
-        //fields to enter your info
+        // Fields to enter your info
         JTextField FirstNameField = new JTextField(20);
         JTextField LastNameField = new JTextField(20);
         JTextField EmailField = new JTextField(30);
         JPasswordField PasswordField = new JPasswordField(20);
 
-        //choose if I want to be a volunteer or a help seeker
+        // Choose if I want to be a volunteer or a help seeker
         String[] users = {"Volunteer", "HelpSeeker"};
         JComboBox<String> usersComboBox = new JComboBox<>(users);
 
-        //Implementation of login button
+        // Implementation of login button
         JButton LoginButton = new JButton("Login");
         LoginButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                // Get the typed information to put it in the database
                 String FirstName = FirstNameField.getText();
                 String LastName = LastNameField.getText();
                 String Email = EmailField.getText();
@@ -54,13 +54,13 @@ public class Login {
                 String Password = new String(PasswordChars);
                 String selectedUser = (String) usersComboBox.getSelectedItem();
 
-                //create an id for the volunteers
+                // Create an id for the volunteers
                 assert selectedUser != null;
                 if (selectedUser.equals("Volunteer")) {
                     String VolunteerPrefix = "V";
                     String Volunteerid = VolunteerPrefix + UUID.randomUUID().toString().substring(1);
 
-                    //we add the volunteer to the table user and the table volunteers
+                    // We add the volunteer to the table Users and the table Volunteers
                     model.Volunteers newVolunteer = new Volunteers(Volunteerid, FirstName, LastName, Email, Password);
                     controllers.NewVolunteer newVolunteerhandler = new controllers.NewVolunteer();
                     newVolunteerhandler.addNewVolunteer(newVolunteer);
@@ -69,15 +69,16 @@ public class Login {
                     controllers.NewUser newUserHandler = new controllers.NewUser();
                     newUserHandler.addNewUser(newUser);
 
-                    // open volunteer frame after login
+                    // Open frame to choose or see the requests after login
                     LoginFrame.dispose();
                     ChooseOrSeeRequest Choosepage = new ChooseOrSeeRequest(Volunteerid);
                 }
+                // Create an id for the HelpSeekers
                 else if (selectedUser.equals("HelpSeeker")) {
                     String HelpSeekerPrefix = "H";
                     String HelpSeekerid = HelpSeekerPrefix + UUID.randomUUID().toString().substring(1);
 
-                    //we add the HelpSeeker to the table user and the table volunteers
+                    // We add the HelpSeeker to the table user and the table volunteers
                     model.HelpSeekers newHelpSeeker = new HelpSeekers(HelpSeekerid, FirstName, LastName, Email, Password);
                     controllers.NewHelpSeeker newHelpSeekerhandler = new controllers.NewHelpSeeker();
                     newHelpSeekerhandler.addNewHelpSeeker(newHelpSeeker);
@@ -86,17 +87,17 @@ public class Login {
                     controllers.NewUser newUserHandler = new controllers.NewUser();
                     newUserHandler.addNewUser(newUser);
 
-                    // open help seeker frame after login
+                    // Open frame to create or see the previous requests after login
                     LoginFrame.dispose();
                     PreviousOrCreateRequest Request = new PreviousOrCreateRequest(HelpSeekerid);
                 }
 
-                //confirmation message once it is done
+                // Confirmation message once it is done
                 JOptionPane.showMessageDialog(null, "You have been successfully logged in as: " + FirstName +" " + LastName);
             }
         });
 
-        //add info to the frame
+        // Add info to the frame
         LoginFrame.setLayout(new BoxLayout(LoginFrame.getContentPane(), BoxLayout.Y_AXIS));
         LoginFrame.add(PreviousButton);
         LoginFrame.add(Box.createVerticalStrut(10));
